@@ -1,32 +1,261 @@
-export const CARS_DATA = [
-  {
-    id: "ertiga-hybrid",
-    name: "All New Ertiga Hybrid",
-    price: 269700000,
+export const allCars = {
+  "ertiga": {
+    name: "Suzuki All New Ertiga Hybrid",
+    slug: "ertiga",
+    segment: "LMPV 7-SEATER UNGGULAN",
+    image: "/images/ERTIGA.jpeg",
+    tagline: "Smart Hybrid SHVS",
+    batteryWarranty: "Garansi Baterai 8 Tahun",
+    startingPrice: 269700000,
+    formattedStartingPrice: "Rp 269.700.000",
+    startingDp: "Rp 25 Jt-an",
+    startingInstallment: "Rp 4,2 Jt/bln",
+    description: "MPV 7-Seater keluarga berteknologi elektrifikasi pintar Suzuki (SHVS) yang nyaman, bertenaga, kabin senyap, dan super hemat bahan bakar hingga 21 KM/Liter.",
+    engine: "1.462 cc",
+    engineDesc: "K15B + ISG Hybrid",
+    fuelEconomy: "21.0 KM/L",
+    fuelDesc: "Hasil Uji SHVS",
+    capacity: "7-Seater",
+    capacityDesc: "Kabin Lega & Fleksibel",
+    transmission: "AT / 5-MT",
+    transmissionDesc: "Responsif & Halus",
+    colors: [
+      { name: "Pearl Snow White", hex: "#FFFFFF" },
+      { name: "Magma Gray Metallic", hex: "#595B60" },
+      { name: "Cool Black", hex: "#171718" },
+      { name: "Burgundy Red Pearl", hex: "#631B2A" }
+    ],
+    variants: [
+      { id: "ga", name: "Ertiga GA", subtitle: "Varian fungsional & tangguh.", transmission: "MANUAL (5-MT)", statusTag: "Ready Stock", statusColor: "text-emerald-600", price: 269700000, formattedPrice: "Rp 269.700.000", dpStart: "DP Mulai Rp 25 Jt-an", isFlagship: false, specs: ["Mesin 1.5L K15B Bertenaga", "AC Digital Double Blower", "Dual SRS Airbag & ABS", "Tilt Steering & Power Window"] },
+      { id: "gl-mt", name: "Ertiga GL MT", subtitle: "Keluarga modern seimbang & stylish.", transmission: "MANUAL (5-MT)", statusTag: "Paling Diminati", statusColor: "text-emerald-600", price: 289400000, formattedPrice: "Rp 289.400.000", dpStart: "DP Mulai Rp 27 Jt-an", isFlagship: false, specs: ["Velg Alloy Two-tone 15 Inch", "Headunit Touchscreen Bluetooth", "Rear Parking Sensor & Kamera", "Audio Switch Steering Control"] },
+      { id: "gl-at", name: "Ertiga GL AT", subtitle: "Matic sempurna lalu lintas kota.", transmission: "AUTOMATIC (AT)", statusTag: "Ready Stock", statusColor: "text-emerald-600", price: 301000000, formattedPrice: "Rp 301.000.000", dpStart: "DP Mulai Rp 28 Jt-an", isFlagship: false, specs: ["Transmisi Otomatis Halus", "Hill Hold Control (HHC)", "Electronic Stability Programme (ESP)", "Sistem Suspensi MacPherson"] }
+    ]
   },
-  {
-    id: "xl7-alpha-hybrid",
-    name: "Suzuki XL7 Alpha Hybrid",
-    price: 298600000,
+  "xl7": {
+    name: "Suzuki XL7 Hybrid",
+    slug: "xl7",
+    segment: "EXTRA COMFORT SUV 7-SEATER",
+    image: "/images/XL7.jpeg",
+    tagline: "SUV Family Tangguh",
+    batteryWarranty: "Garansi Baterai 8 Tahun",
+    startingPrice: 305300000,
+    formattedStartingPrice: "Rp 305.300.000",
+    startingDp: "Rp 28 Jt-an",
+    startingInstallment: "Rp 4,8 Jt/bln",
+    description: "SUV keluarga modern dengan ground clearance tinggi 200 mm, kabin luas 7 penumpang, teknologi Smart Hybrid, serta fitur canggih E-Mirror Touchscreen.",
+    engine: "1.462 cc",
+    engineDesc: "K15B + SHVS Hybrid",
+    fuelEconomy: "19.5 KM/L",
+    fuelDesc: "Efisiensi SUV Hybrid",
+    capacity: "7-Seater",
+    capacityDesc: "3 Baris Luas & Fleksibel",
+    transmission: "AT / MT",
+    transmissionDesc: "Tangguh Luar Kota",
+    colors: [
+      { name: "Rising Orange + Black", hex: "#D85B24" },
+      { name: "Brave Khaki + Black", hex: "#635848" },
+      { name: "Snow White Pearl", hex: "#FFFFFF" },
+      { name: "Cool Black", hex: "#171718" }
+    ],
+    variants: [
+      { id: "zeta-mt", name: "XL7 Zeta MT", subtitle: "Varian SUV gagah & ekonomis.", transmission: "MANUAL (5-MT)", statusTag: "Ready Stock", statusColor: "text-emerald-600", price: 305300000, formattedPrice: "Rp 305.300.000", dpStart: "DP Mulai Rp 28 Jt-an", isFlagship: false, specs: ["LED Headlamp with DRL", "Ground Clearance 200 mm", "Roof Rail Fungsional", "Head Unit 8 Inch Touchscreen"] },
+      { id: "zeta-at", name: "XL7 Zeta AT", subtitle: "Matic nyaman untuk medan kota.", transmission: "AUTOMATIC (AT)", statusTag: "Ready Stock", statusColor: "text-emerald-600", price: 315300000, formattedPrice: "Rp 315.300.000", dpStart: "DP Mulai Rp 30 Jt-an", isFlagship: false, specs: ["Transmisi Matic Responsif", "Hill Hold Control (HHC)", "Rear Parking Sensor", "Armrest Baris 1 & 2"] },
+      { id: "beta-mt", name: "XL7 Beta MT (Hybrid)", subtitle: "Efisiensi mesin Smart Hybrid SHVS.", transmission: "SHVS HYBRID MT", statusTag: "Smart Hybrid", statusColor: "text-emerald-600 font-bold", price: 331400000, formattedPrice: "Rp 331.400.000", dpStart: "DP Mulai Rp 33 Jt-an", isFlagship: false, specs: ["Teknologi SHVS Lithium-ion", "Auto Light with Guide Me", "Cruise Control System", "Auto Climate AC Digital"] },
+      { id: "alpha-at", name: "XL7 Alpha AT (Hybrid)", subtitle: "Edisi tertinggi terlengkap & paling mewah.", transmission: "SHVS HYBRID AT", statusTag: "Top Flagship", statusColor: "text-red-600 font-bold", price: 353400000, formattedPrice: "Rp 353.400.000", dpStart: "DP Mulai Rp 35 Jt-an", isFlagship: true, specs: ["E-Mirror Touchscreen Spion DVR", "Two-Tone Exterior Paint", "Rear Upper Spoiler Sporty", "Door Sill Guard & Emblem Alpha"] }
+    ]
   },
-  {
-    id: "jimny-5-door",
-    name: "Suzuki Jimny 5-Door",
-    price: 465000000,
+  "fronx": {
+    name: "Suzuki Fronx",
+    slug: "fronx",
+    segment: "DYNAMIC COMPACT CROSSOVER",
+    image: "/images/FRONX.jpeg",
+    tagline: "Desain Coupé Sporty",
+    batteryWarranty: "Garansi Mesin Resmi",
+    startingPrice: 279500000,
+    formattedStartingPrice: "Rp 279.500.000",
+    startingDp: "Rp 26 Jt-an",
+    startingInstallment: "Rp 4,3 Jt/bln",
+    description: "Crossover modern bergaya coupé yang trendi dengan akselerasi responsif, ground clearance tinggi, interior dual-tone berkelas, dan fitur konektivitas terkini.",
+    engine: "1.498 cc / Boosterjet",
+    engineDesc: "Bertenaga & Irit",
+    fuelEconomy: "20.2 KM/L",
+    fuelDesc: "Standar Uji Crossover",
+    capacity: "5-Seater",
+    capacityDesc: "Ergonomis & Modern",
+    transmission: "AT / MT",
+    transmissionDesc: "Paddle Shift Sporty",
+    colors: [
+      { name: "Lucent Orange", hex: "#DC582A" },
+      { name: "Arctic White", hex: "#F3F3F3" },
+      { name: "Grandeur Grey", hex: "#4A4D50" },
+      { name: "Bluish Black", hex: "#15181C" }
+    ],
+    variants: [
+      { id: "gl-mt", name: "Fronx GL MT", subtitle: "Crossover gesit dan bergaya sporty.", transmission: "MANUAL (5-MT)", statusTag: "Ready Stock", statusColor: "text-emerald-600", price: 279500000, formattedPrice: "Rp 279.500.000", dpStart: "DP Mulai Rp 26 Jt-an", isFlagship: false, specs: ["Desain Coupé SUV Modern", "LED Headlamp & Tail Light Connected", "Headunit Touchscreen 7 Inch", "Dual SRS Airbag & ESP"] },
+      { id: "gl-at", name: "Fronx GL AT", subtitle: "Matic praktis untuk gaya hidup perkotaan.", transmission: "AUTOMATIC (AT)", statusTag: "Paling Diminati", statusColor: "text-emerald-600", price: 290500000, formattedPrice: "Rp 290.500.000", dpStart: "DP Mulai Rp 28 Jt-an", isFlagship: false, specs: ["Transmisi Otomatis Halus", "Hill Hold Assist", "Rear Camera Parking", "Tilt Steering Wheel"] },
+      { id: "gx-at-hybrid", name: "Fronx GX AT (Hybrid)", subtitle: "Efisiensi elektrifikasi Smart Hybrid canggih.", transmission: "SMART HYBRID AT", statusTag: "Hybrid SHVS", statusColor: "text-emerald-600 font-bold", price: 320200000, formattedPrice: "Rp 320.200.000", dpStart: "DP Mulai Rp 31 Jt-an", isFlagship: false, specs: ["Mesin Smart Hybrid SHVS", "Headunit HD 9 Inch Audio Display", "Wireless Smartphone Charging", "Cruise Control & Paddle Shift"] },
+      { id: "sgx-kuro", name: "Fronx SGX Kuro Special", subtitle: "Varian flagship aksen black edition eksklusif.", transmission: "SMART HYBRID AT", statusTag: "Special Edition", statusColor: "text-red-600 font-bold", price: 348800000, formattedPrice: "Rp 348.800.000", dpStart: "DP Mulai Rp 35 Jt-an", isFlagship: true, specs: ["360 Degree View Camera", "Head-Up Display (HUD) Layar Kaca", "Velg Glossy Black Edition 16 Inch", "Interior Premium Dual Tone"] }
+    ]
   },
-  {
-    id: "carry-pick-up",
-    name: "New Carry Pick Up Wide Deck",
-    price: 198700000,
+  "jimny": {
+    name: "Suzuki Jimny",
+    slug: "jimny",
+    segment: "THE AUTHENTIC 4WD OFFROAD ICON",
+    image: "/images/JIMNY.jpeg",
+    tagline: "Legenda 4x4 Dunia",
+    batteryWarranty: "Garansi Mesin Resmi",
+    startingPrice: 522100000,
+    formattedStartingPrice: "Rp 522.100.000",
+    startingDp: "Rp 60 Jt-an",
+    startingInstallment: "Rp 8,5 Jt/bln",
+    description: "Ikon SUV off-road sejati dengan sistem penggerak 4 roda AllGrip Pro, sasis tangga Ladder Frame kokoh, dan rigid axle suspension untuk menaklukkan medan terberat.",
+    engine: "1.462 cc",
+    engineDesc: "K15B DOHC 16-Valve",
+    fuelEconomy: "14.8 KM/L",
+    fuelDesc: "Offroad & Onroad",
+    capacity: "4 - 5 Seater",
+    capacityDesc: "Pilihan 3 & 5 Pintu",
+    transmission: "4-AT / 5-MT",
+    transmissionDesc: "AllGrip Pro 4WD",
+    colors: [
+      { name: "Kinetic Yellow + Black", hex: "#E2E543" },
+      { name: "Jungle Green", hex: "#3A453A" },
+      { name: "Medium Gray", hex: "#6E7173" },
+      { name: "Bluish Black Pearl", hex: "#181A1D" }
+    ],
+    variants: [
+      { id: "3d-at", name: "Jimny 3-Door AT", subtitle: "Bodi kompak legendaris kelincahan offroad.", transmission: "ALLGRIP PRO 4-AT", statusTag: "Ready Stock", statusColor: "text-emerald-600", price: 522100000, formattedPrice: "Rp 522.100.000", dpStart: "DP Mulai Rp 60 Jt-an", isFlagship: false, specs: ["Sistem AllGrip Pro (2H, 4H, 4L)", "Ladder Frame Chassis Kokoh", "Lampu LED Projector Washer", "Brake LSD Traction Control"] },
+      { id: "3d-at-two", name: "Jimny 3-Door AT Dual Tone", subtitle: "Tampilan kontras atap hitam lebih modis.", transmission: "ALLGRIP PRO 4-AT", statusTag: "Paling Diminati", statusColor: "text-emerald-600", price: 525200000, formattedPrice: "Rp 525.200.000", dpStart: "DP Mulai Rp 62 Jt-an", isFlagship: false, specs: ["Dual Tone Atap Hitam Eksklusif", "Cruise Control & Hill Descent Control", "Headunit Touchscreen 7 Inch HD", "Velg Alloy Gunmetal 15 Inch"] },
+      { id: "5d-at", name: "Jimny 5-Door AT", subtitle: "Ruang kabin ekstra lega dengan 5 pintu.", transmission: "ALLGRIP PRO 4-AT", statusTag: "Kabin 5 Pintu", statusColor: "text-emerald-600 font-bold", price: 534400000, formattedPrice: "Rp 534.400.000", dpStart: "DP Mulai Rp 65 Jt-an", isFlagship: false, specs: ["Wheelbase Lebih Panjang 340 mm", "Headunit Besar 9 Inch HD Touchscreen", "Akses Masuk Baris Kedua Nyaman", "Ruang Bagasi Belakang Ekstra Luas"] },
+      { id: "5d-at-two", name: "Jimny 5-Door AT Dual Tone", subtitle: "Varian termewah 5 pintu kombinasi dual tone.", transmission: "ALLGRIP PRO 4-AT", statusTag: "Top Ultimate", statusColor: "text-red-600 font-bold", price: 537500000, formattedPrice: "Rp 537.500.000", dpStart: "DP Mulai Rp 68 Jt-an", isFlagship: true, specs: ["Front Grille Chrome Plated Aksen", "Rear Parking Camera & Sensor", "6 Titik Kantong Udara (Airbags)", "Paket Aksesoris Offroad Lengkap"] }
+    ]
   },
-  {
-    id: "s-presso",
-    name: "Suzuki S-Presso ESP",
-    price: 178500000,
+  "grand-vitara": {
+    name: "Suzuki Grand Vitara",
+    slug: "grand-vitara",
+    segment: "THE INTELLIGENT PREMIUM HYBRID SUV",
+    image: "/images/GRAND VITARA.jpeg",
+    tagline: "Flagship Hybrid SUV",
+    batteryWarranty: "Garansi Baterai 8 Tahun",
+    startingPrice: 434000000,
+    formattedStartingPrice: "Rp 434.000.000",
+    startingDp: "Rp 45 Jt-an",
+    startingInstallment: "Rp 6,8 Jt/bln",
+    description: "SUV flagship premium bertabur fitur termewah: Panoramic Sunroof, kamera 360, wireless charger, dan mesin Smart Hybrid yang bertenaga namun ramah lingkungan.",
+    engine: "1.462 cc K15C",
+    engineDesc: "Dualjet + SHVS Hybrid",
+    fuelEconomy: "18.8 KM/L",
+    fuelDesc: "Efisiensi Flagship",
+    capacity: "5-Seater",
+    capacityDesc: "Panoramic Luxury",
+    transmission: "6-Speed AT",
+    transmissionDesc: "Paddle Shift",
+    colors: [
+      { name: "Pearl Splendid Silver + Black", hex: "#A8ACB0" },
+      { name: "Pearl Celestial Blue + Black", hex: "#234167" },
+      { name: "Pearl Arctic White", hex: "#FFFFFF" },
+      { name: "Pearl Midnight Black", hex: "#111214" }
+    ],
+    variants: [
+      { id: "mc-gx-single", name: "New MC GX AT Single Tone", subtitle: "SUV flagship mewah berteknologi SHVS.", transmission: "6-SPEED AT PADDLE SHIFT", statusTag: "Ready Stock", statusColor: "text-emerald-600 font-bold", price: 434000000, formattedPrice: "Rp 434.000.000", dpStart: "DP Mulai Rp 45 Jt-an", isFlagship: false, specs: ["Panoramic Sunroof Luas", "360 Degree View Camera", "Head Up Display (HUD)", "Wireless Smartphone Charger"] },
+      { id: "mc-gx-dual", name: "New MC GX AT Dual Tone", subtitle: "Kemewahan elegan kombinasi atap hitam.", transmission: "6-SPEED AT PADDLE SHIFT", statusTag: "Top Flagship", statusColor: "text-red-600 font-bold", price: 437000000, formattedPrice: "Rp 437.000.000", dpStart: "DP Mulai Rp 48 Jt-an", isFlagship: true, specs: ["Kombinasi Dual Tone Body Eksklusif", "Lampu LED Projector Auto Levelling", "Cruise Control & 6 Airbags", "Jok Kulit Premium Ventilted Seat"] }
+    ]
   },
-  {
-    id: "grand-vitara",
-    name: "Grand Vitara Hybrid",
-    price: 388000000,
+  "spresso": {
+    name: "Suzuki S-Presso",
+    slug: "spresso",
+    segment: "CITY COMPACT SUV SUPER HEMAT",
+    image: "/images/S-PRESSO.jpeg",
+    tagline: "Lincah & Super Irit",
+    batteryWarranty: "Garansi Mesin Resmi",
+    startingPrice: 193500000,
+    formattedStartingPrice: "Rp 193.500.000",
+    startingDp: "Rp 15 Jt-an",
+    startingInstallment: "Rp 3,1 Jt/bln",
+    description: "Mobil kota bergaya SUV mungil dengan ground clearance tinggi, radius putar lincah, serta konsumsi BBM super irit hingga 21 KM/Liter.",
+    engine: "998 cc K10C",
+    engineDesc: "Dualjet Next Gen",
+    fuelEconomy: "21.6 KM/L",
+    fuelDesc: "Paling Hemat di Kelasnya",
+    capacity: "5-Seater",
+    capacityDesc: "Lincah Masuk Gang",
+    transmission: "AGS (Auto Gear) / MT",
+    transmissionDesc: "Praktis Tanpa Kopling",
+    colors: [
+      { name: "Sizzle Orange", hex: "#E85C27" },
+      { name: "White", hex: "#FFFFFF" },
+      { name: "Granite Grey", hex: "#525456" },
+      { name: "Starry Blue", hex: "#1C355E" }
+    ],
+    variants: [
+      { id: "spresso-mt", name: "S-Presso MT", subtitle: "City car gesit dan paling ekonomis.", transmission: "MANUAL (5-MT)", statusTag: "Ready Stock", statusColor: "text-emerald-600", price: 193500000, formattedPrice: "Rp 193.500.000", dpStart: "DP Mulai Rp 15 Jt-an", isFlagship: false, specs: ["Mesin 1.0L K10C Dualjet Hemat", "Ground Clearance 180 mm", "Headunit Touchscreen 7 Inch", "Dual SRS Airbag & Sensor Parkir"] },
+      { id: "spresso-at", name: "S-Presso AGS (AT)", subtitle: "Transmisi matic praktis anti pegal macet.", transmission: "AUTO GEAR SHIFT (AGS)", statusTag: "Paling Laris", statusColor: "text-red-600 font-bold", price: 205000000, formattedPrice: "Rp 205.000.000", dpStart: "DP Mulai Rp 18 Jt-an", isFlagship: true, specs: ["Transmisi Otomatis AGS Fleksibel", "Electronic Stability Programme (ESP)", "Hill Hold Control (HHC)", "Fitur Engine Auto Stop Irit BBM"] }
+    ]
   },
-];
+  "apv": {
+    name: "Suzuki APV Arena",
+    slug: "apv",
+    segment: "MULTI-PURPOSE MPV & NIAGA LUAS",
+    image: "/images/APV.jpeg",
+    tagline: "Serbaguna & Muatan Lega",
+    batteryWarranty: "Garansi Mesin Resmi",
+    startingPrice: 197100000,
+    formattedStartingPrice: "Rp 197.100.000",
+    startingDp: "Rp 20 Jt-an",
+    startingInstallment: "Rp 3,5 Jt/bln",
+    description: "Solusi legendaris untuk kendaraan operasional usaha, logistik kargo katering/ekspedisi, maupun antar jemput keluarga dengan daya tampung hingga 8 penumpang.",
+    engine: "1.493 cc G15A",
+    engineDesc: "Bandel & Mudah Servis",
+    fuelEconomy: "13.5 KM/L",
+    fuelDesc: "Daya Angkut Maksimal",
+    capacity: "8 Kursi / Kargo",
+    capacityDesc: "Kabin Tertinggi & Terluas",
+    transmission: "MANUAL (5-MT)",
+    transmissionDesc: "Tangguh Muatan Berat",
+    colors: [
+      { name: "Cool Black", hex: "#161617" },
+      { name: "Silky Silver", hex: "#B8B9BB" },
+      { name: "Graphite Grey", hex: "#4C4E51" },
+      { name: "White", hex: "#FFFFFF" }
+    ],
+    variants: [
+      { id: "blind-van", name: "APV Blind Van", subtitle: "Armada kargo tertutup usaha ekspedisi & toko.", transmission: "MANUAL (5-MT)", statusTag: "Kargo Usaha", statusColor: "text-emerald-600", price: 197100000, formattedPrice: "Rp 197.100.000", dpStart: "DP Mulai Rp 20 Jt-an", isFlagship: false, specs: ["Kapasitas Kargo Luas Tertutup", "Daya Angkut Hingga 1 Ton", "Mesin G15A Kuat & Irit", "Pintu Geser Samping & Bagasi Luas"] },
+      { id: "apv-ge", name: "APV Arena GE", subtitle: "Mobil keluarga fungsional & operasional kantor.", transmission: "MANUAL (5-MT)", statusTag: "Ready Stock", statusColor: "text-emerald-600", price: 238300000, formattedPrice: "Rp 238.300.000", dpStart: "DP Mulai Rp 24 Jt-an", isFlagship: false, specs: ["Kapasitas 8 Penumpang Nyaman", "AC Dingin Merata", "Power Steering Ringan", "Seat Belt di Setiap Baris"] },
+      { id: "apv-gl", name: "APV Arena GL", subtitle: "Kenyamanan ekstra dengan interior berkelas.", transmission: "MANUAL (5-MT)", statusTag: "Paling Diminati", statusColor: "text-emerald-600", price: 246600000, formattedPrice: "Rp 246.600.000", dpStart: "DP Mulai Rp 25 Jt-an", isFlagship: false, specs: ["Velg Alloy Wheel 14 Inch", "Audio Switch & Power Window", "AC Double Blower Dingin", "Central Door Lock & Alarm"] },
+      { id: "apv-gx", name: "APV Arena GX", subtitle: "Tipe mewah captain seat & ornamen elegan.", transmission: "MANUAL (5-MT)", statusTag: "Varian Mewah", statusColor: "text-emerald-600", price: 260700000, formattedPrice: "Rp 260.700.000", dpStart: "DP Mulai Rp 27 Jt-an", isFlagship: false, specs: ["Grille Depan Krom Mewah", "Foglamp & Spion Elektrik Retract", "Interior Wooden Panel Elegan", "Head Unit Multimedia"] },
+      { id: "apv-sgx", name: "APV Arena SGX", subtitle: "Kasta tertinggi kenyamanan keluarga premium.", transmission: "MANUAL (5-MT)", statusTag: "Top Luxury", statusColor: "text-red-600 font-bold", price: 264300000, formattedPrice: "Rp 264.300.000", dpStart: "DP Mulai Rp 28 Jt-an", isFlagship: true, specs: ["Captain Seat Mewah Baris Kedua", "Spoiler Belakang Sporty", "Sensor Parkir Mundur", "Paket Ornamen Krom Lengkap"] }
+    ]
+  },
+  "carry": {
+    name: "New Carry Pick Up",
+    slug: "carry",
+    segment: "RAJANYA KENDARAAN NIAGA SULAWESI",
+    image: "/images/CARRY.jpeg",
+    tagline: "Rajanya Pick Up Niaga",
+    batteryWarranty: "Garansi Mesin Resmi 3 Tahun",
+    startingPrice: 198200000,
+    formattedStartingPrice: "Rp 198.200.000",
+    startingDp: "Rp 15 Jt-an",
+    startingInstallment: "Rp 3,2 Jt/bln",
+    description: "Pilihan utama para pengusaha Sulawesi Selatan. Muat lebih banyak hingga 1 ton, mesin bandel K15B-C, bak kokoh, dan biaya perawatan paling murah.",
+    engine: "1.462 cc K15B-C",
+    engineDesc: "Torsi Besar & Irit",
+    fuelEconomy: "15.5 KM/L",
+    fuelDesc: "Paling Irit Niaga",
+    capacity: "Muatan 1 Ton",
+    capacityDesc: "Bak Luas 3 Sisi Buka",
+    transmission: "MANUAL (5-MT)",
+    transmissionDesc: "Bandel di Segala Medan",
+    colors: [
+      { name: "White Solid", hex: "#FFFFFF" },
+      { name: "Silky Silver Metallic", hex: "#B8B9BB" },
+      { name: "Real Black", hex: "#161617" }
+    ],
+    variants: [
+      { id: "fd", name: "New Carry Flat Deck (FD)", subtitle: "Bak standar buka belakang untuk angkutan umum.", transmission: "MANUAL (5-MT)", statusTag: "Paling Laris", statusColor: "text-emerald-600", price: 198200000, formattedPrice: "Rp 198.200.000", dpStart: "DP Mulai Rp 15 Jt-an", isFlagship: false, specs: ["Dimensi Bak P: 2.505 mm L: 1.665 mm", "Kapasitas Angkut 1 Ton", "Bukaan Bak 1 Arah Belakang", "Kabin Lega 3 Penumpang + Headrest"] },
+      { id: "wd", name: "New Carry Wide Deck (WD)", subtitle: "Bak ekstra lebar buka 3 sisi praktis bongkar muat.", transmission: "MANUAL (5-MT)", statusTag: "Ready Stock", statusColor: "text-emerald-600 font-bold", price: 198700000, formattedPrice: "Rp 198.700.000", dpStart: "DP Mulai Rp 16 Jt-an", isFlagship: false, specs: ["Dimensi Bak Lebih Lebar 1.745 mm", "Bukaan Bak 3 Sisi Fleksibel", "Pengait Tambang Ekstra Kuat", "Kaca Belakang Dilindungi Tralis"] },
+      { id: "fd-ac-ps", name: "New Carry FD AC PS", subtitle: "Dilengkapi AC dingin & setir Power Steering ringan.", transmission: "MANUAL (5-MT) + AC PS", statusTag: "Nyaman & Dingin", statusColor: "text-emerald-600 font-bold", price: 207600000, formattedPrice: "Rp 207.600.000", dpStart: "DP Mulai Rp 18 Jt-an", isFlagship: false, specs: ["Air Conditioner (AC) Dingin", "Power Steering (PS) Ringan Bermanuver", "Audio 1-DIN Radio USB", "Jok Sliding Driver Nyaman"] },
+      { id: "wd-ac-ps", name: "New Carry WD AC PS", subtitle: "Tipe komplit niaga: Bak lebar 3 sisi + AC & Power Steering.", transmission: "MANUAL (5-MT) + AC PS", statusTag: "Top Rekomendasi", statusColor: "text-red-600 font-bold", price: 208100000, formattedPrice: "Rp 208.100.000", dpStart: "DP Mulai Rp 19 Jt-an", isFlagship: true, specs: ["Bak Ekstra Lebar Bukaan 3 Sisi", "AC & Power Steering Komplit", "Kunci Immobilizer Anti Maling", "Sasis Tebal & Suspensi Daun Kuat"] }
+    ]
+  }
+};
