@@ -1,20 +1,17 @@
 {
-  "version": 2,
-  "builds": [
+  "outputDirectory": "public",
+  "cleanUrls": true,
+  "rewrites": [
     {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "public"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "handle": "filesystem"
+      "source": "/build/(.*)",
+      "destination": "/build/$1"
     },
     {
-      "src": "/(.*)",
+      "source": "/images/(.*)",
+      "destination": "/images/$1"
+    },
+    {
+      "source": "/((?!favicon.ico|robots.txt).*)",
       "destination": "/index.html"
     }
   ]
