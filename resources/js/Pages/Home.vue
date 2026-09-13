@@ -1,6 +1,5 @@
 ﻿<script setup>
 import { ref, computed } from 'vue';
-import { Link } from '@inertiajs/vue3';
 import Navbar from '../Components/Navbar.vue';
 
 // 1. Data Slider Hero (3 Slide Lengkap)
@@ -54,6 +53,7 @@ const cars = [
   {
     id: 1,
     name: "All New Ertiga",
+    slug: "ertiga",
     category: ["passenger", "hybrid"],
     badgeTopLeft: "Smart Hybrid SHVS",
     badgeTopLeftColor: "bg-emerald-600",
@@ -65,12 +65,17 @@ const cars = [
     dpPromo: "DP Mulai Rp 20 Jt-an",
     dpValue: 20000000,
     tags: ["1.500cc SHVS", "7 Penumpang", "AT & MT"],
-    detailUrl: "/mobil/ertiga",
+    specs: {
+      mesin: "K15B + ISG (Smart Hybrid Vehicle by Suzuki)",
+      transmisi: "Otomatis 4-Speed / Manual 5-Speed",
+      fitur: "Cruise Control, Electronic Stability Programme, Hill Hold Control, Smart Key"
+    },
     image: "/images/ERTIGA.jpeg"
   },
   {
     id: 2,
     name: "Suzuki XL7",
+    slug: "xl7",
     category: ["passenger", "hybrid"],
     badgeTopLeft: "SUV Family Gagah",
     badgeTopLeftColor: "bg-[#06182A]",
@@ -80,12 +85,17 @@ const cars = [
     dpPromo: "DP Mulai Rp 25 Jt-an",
     dpValue: 25000000,
     tags: ["Ground Clearance 200mm", "E-Mirror Touchscreen", "Cruise Control"],
-    detailUrl: "/mobil/xl7",
+    specs: {
+      mesin: "K15B DOHC Dualjet with SHVS",
+      transmisi: "Otomatis / Manual",
+      fitur: "Smart E-Mirror Touchscreen dashcam, Auto Light with Guide Me, R16 Machined Alloy Wheels"
+    },
     image: "/images/XL7.jpeg"
   },
   {
     id: 3,
     name: "Suzuki Fronx",
+    slug: "fronx",
     category: ["passenger", "hybrid"],
     badgeTopLeft: "New Modern Crossover",
     badgeTopLeftColor: "bg-red-600",
@@ -95,12 +105,17 @@ const cars = [
     dpPromo: "DP Mulai Rp 30 Jt-an",
     dpValue: 30000000,
     tags: ["Desain Coupé Gagah", "Pilihan Turbo/Hybrid", "Fitur Canggih"],
-    detailUrl: "/mobil/fronx",
+    specs: {
+      mesin: "Boosterjet 1.0L Turbo / 1.5L Dualjet Hybrid",
+      transmisi: "6-Speed AT with Paddle Shift / 5-Speed MT",
+      fitur: "Head-Up Display, 360 View Camera, 9-inch HD Smartplay Touchscreen, Wireless Apple CarPlay"
+    },
     image: "/images/FRONX.jpeg"
   },
   {
     id: 4,
     name: "Suzuki Jimny",
+    slug: "jimny",
     category: ["passenger"],
     badgeTopLeft: "Legendary 4x4 Offroad",
     badgeTopLeftColor: "bg-red-600",
@@ -110,12 +125,17 @@ const cars = [
     dpPromo: "DP Mulai Rp 100 Jt-an",
     dpValue: 100000000,
     tags: ["AllGrip Pro 4WD", "Ladder Frame Chassis", "Tersedia 3 & 5 Door"],
-    detailUrl: "/mobil/jimny",
+    specs: {
+      mesin: "K15B 1.5L 4-Silinder Tangguh",
+      transmisi: "4-Speed AT / 5-Speed MT dengan Transfer Case 4WD",
+      fitur: "LSD Traction Control, Hill Descent Control, Rigid Axle Suspension with Coil Spring"
+    },
     image: "/images/JIMNY.jpeg"
   },
   {
     id: 5,
     name: "Grand Vitara",
+    slug: "grand-vitara",
     category: ["passenger", "hybrid"],
     badgeTopLeft: "Flagship Hybrid SUV",
     badgeTopLeftColor: "bg-[#06182A]",
@@ -125,12 +145,17 @@ const cars = [
     dpPromo: "DP Mulai Rp 30 Jt-an",
     dpValue: 30000000,
     tags: ["Panoramic Sunroof", "360 View Camera", "Wireless Charger"],
-    detailUrl: "/mobil/grand-vitara",
+    specs: {
+      mesin: "K15C Dualjet 1.5L SHVS Hybrid",
+      transmisi: "6-Speed Automatic with Paddle Shift",
+      fitur: "Panoramic Sunroof elektrik, Head Up Display, 6 Airbags, Autodimming Rear View Mirror"
+    },
     image: "/images/GRAND VITARA.jpeg"
   },
   {
     id: 6,
     name: "Suzuki S-Presso",
+    slug: "spresso",
     category: ["passenger"],
     badgeTopLeft: "City Compact SUV",
     badgeTopLeftColor: "bg-[#49607e]",
@@ -140,12 +165,17 @@ const cars = [
     dpPromo: "DP Mulai Rp 20 Jt-an",
     dpValue: 20000000,
     tags: ["Irit s/d 21 km/L", "Transmisi AGS/MT", "Dual SRS Airbag"],
-    detailUrl: "/mobil/spresso",
+    specs: {
+      mesin: "K10C Dualjet 1.0L Super Irit",
+      transmisi: "Auto Gear Shift (AGS) / Manual 5-Speed",
+      fitur: "Electronic Stability Program (ESP), Hill Hold Control, 7-inch Touchscreen Audio"
+    },
     image: "/images/S-PRESSO.jpeg"
   },
   {
     id: 7,
     name: "Suzuki APV",
+    slug: "apv",
     category: ["passenger", "commercial"],
     badgeTopLeft: "Serbaguna & Luas",
     badgeTopLeftColor: "bg-[#06182A]",
@@ -155,12 +185,17 @@ const cars = [
     dpPromo: "DP Mulai Rp 50 Jt-an",
     dpValue: 50000000,
     tags: ["Kapasitas Lega 8 Kursi", "Tersedia Blind Van", "Mesin G15A Bandel"],
-    detailUrl: "/mobil/apv",
+    specs: {
+      mesin: "G15A 1.5L Multipoint Injection",
+      transmisi: "5-Speed Manual",
+      fitur: "Kabin Luas 8 Penumpang, Double Blower AC, Suspensi Per Daun Kuat Muatan"
+    },
     image: "/images/APV.jpeg"
   },
   {
     id: 8,
     name: "Carry Pick Up",
+    slug: "carry",
     category: ["commercial"],
     badgeTopLeft: "Rajanya Niaga",
     badgeTopLeftColor: "bg-emerald-600",
@@ -170,7 +205,11 @@ const cars = [
     dpPromo: "DP Mulai Rp 10 Jt-an",
     dpValue: 10000000,
     tags: ["Daya Muat 1 Ton", "Bak Luas Pilihan AC/PS", "Mesin K15B-C Irit"],
-    detailUrl: "/mobil/carry",
+    specs: {
+      mesin: "K15B-C 1.5L Bandel & Torsi Kuat",
+      transmisi: "5-Speed Manual",
+      fitur: "Kapasitas Muat 1 Ton, Pilihan Bak Flat Deck / Wide Deck 3 Bukaan, Audio & AC/PS"
+    },
     image: "/images/CARRY.jpeg"
   }
 ];
@@ -180,6 +219,19 @@ const filteredCars = computed(() => {
   if (selectedCategory.value === 'all') return cars;
   return cars.filter(c => c.category.includes(selectedCategory.value));
 });
+
+// MODAL DETAIL MOBIL CLIENT-SIDE (Mencegah 404 Inertia Backend)
+const activeModalCar = ref(null);
+
+const openDetailModal = (car) => {
+  activeModalCar.value = car;
+  document.body.style.overflow = 'hidden';
+};
+
+const closeDetailModal = () => {
+  activeModalCar.value = null;
+  document.body.style.overflow = '';
+};
 
 // 3. Kalkulator Kredit Instan
 const formatIDR = (num) => 'Rp ' + Math.round(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
@@ -452,7 +504,7 @@ const toggleGallery = () => {
         </div>
       </section>
 
-      <!-- 2. QUICK ACTION STRIP (3 Kolom Simetris) -->
+      <!-- 2. QUICK ACTION STRIP -->
       <section class="relative z-30 -mt-12 max-w-7xl mx-auto px-4 sm:px-6 w-full">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <a href="https://wa.me/6285299837635?text=Halo%20CHAE%20SUZUKI,%20saya%20mau%20booking%20test%20drive" target="_blank" class="group bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all border border-slate-200 flex flex-col justify-between">
@@ -523,7 +575,7 @@ const toggleGallery = () => {
             </div>
           </div>
 
-          <!-- Car Grid (8 Unit Mobil) -->
+          <!-- Car Grid -->
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             <div v-for="car in filteredCars" :key="car.id" class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-200 flex flex-col justify-between">
               <div>
@@ -543,19 +595,16 @@ const toggleGallery = () => {
                     <h3 class="text-lg font-bold text-slate-900 leading-snug">{{ car.name }}</h3>
                   </div>
 
-                  <!-- AREA HARGA + BADGE DP PROMO TERBARU (Hanya Nominal DP) -->
                   <div>
                     <span class="text-xs text-slate-400">Harga OTR Makassar mulai:</span>
                     <p class="text-xl font-extrabold text-red-600 leading-none mt-0.5">{{ car.formattedPrice }}</p>
                     
-                    <!-- BADGE DP PROMO RINGAN -->
                     <div class="mt-2.5 flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-800 px-3 py-1.5 rounded-lg">
                       <span class="material-symbols-outlined text-[18px] text-emerald-600 shrink-0">payments</span>
                       <span class="text-xs font-extrabold">{{ car.dpPromo }}</span>
                     </div>
                   </div>
 
-                  <!-- Tags Spesifikasi -->
                   <div class="flex flex-wrap gap-1.5 pt-1">
                     <span v-for="(tag, i) in car.tags" :key="i" class="text-[10px] font-semibold bg-slate-100 text-slate-600 px-2 py-0.5 rounded">
                       {{ tag }}
@@ -566,10 +615,11 @@ const toggleGallery = () => {
 
               <!-- Tombol Detail Mobil & Chat Sales -->
               <div class="p-5 pt-0 grid grid-cols-2 gap-2">
-                <Link :href="car.detailUrl"
-                      class="h-10 bg-[#06182A] hover:bg-slate-800 text-white text-xs font-bold rounded-lg flex items-center justify-center transition-colors">
+                <!-- MEMBUKA MODAL LOKAL TANPA 404 BACKEND -->
+                <button type="button" @click="openDetailModal(car)"
+                        class="h-10 bg-[#06182A] hover:bg-slate-800 text-white text-xs font-bold rounded-lg flex items-center justify-center transition-colors cursor-pointer">
                   Detail Mobil
-                </Link>
+                </button>
 
                 <a :href="`https://wa.me/6285299837635?text=Halo%20CHAE%20SUZUKI,%20saya%20mau%20tanya%20paket%20${encodeURIComponent(car.dpPromo)}%20untuk%20${encodeURIComponent(car.name)}`" target="_blank"
                    class="h-10 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded-lg flex items-center justify-center gap-1 transition-colors shadow-sm">
@@ -582,11 +632,10 @@ const toggleGallery = () => {
         </div>
       </section>
 
-      <!-- 4. INTERACTIVE CREDIT SIMULATOR DENGAN PILIHAN LEASING -->
+      <!-- 4. INTERACTIVE CREDIT SIMULATOR -->
       <section class="w-full py-16 bg-slate-50 border-y border-slate-200" id="kredit-calculator">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
           <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200 grid grid-cols-1 lg:grid-cols-12">
-            <!-- Left Controls -->
             <div class="lg:col-span-7 p-6 lg:p-10 space-y-6">
               <div>
                 <span class="text-xs font-bold text-red-600 uppercase tracking-wider">Transparansi Pembiayaan</span>
@@ -604,11 +653,8 @@ const toggleGallery = () => {
                   </select>
                 </div>
 
-                <!-- PILIHAN METODE PEMBAYARAN CICILAN / LEASING -->
                 <div>
-                  <label class="block text-sm font-semibold text-slate-800 mb-1.5">
-                    Pilihan Metode Pembayaran / Leasing Rekanan
-                  </label>
+                  <label class="block text-sm font-semibold text-slate-800 mb-1.5">Pilihan Metode Pembayaran / Leasing Rekanan</label>
                   <select v-model="selectedLeasing" class="w-full h-12 px-4 rounded-xl bg-slate-100 border border-slate-200 text-sm font-semibold text-slate-800 outline-none focus:bg-white focus:ring-2 focus:ring-[#06182A]">
                     <option v-for="(lease, idx) in leasingPartners" :key="idx" :value="lease">
                       {{ lease }}
@@ -642,7 +688,6 @@ const toggleGallery = () => {
               </div>
             </div>
 
-            <!-- Right Results -->
             <div class="lg:col-span-5 bg-[#06182A] text-white p-6 lg:p-10 flex flex-col justify-between">
               <div class="space-y-4">
                 <div class="flex items-center justify-between">
@@ -668,7 +713,6 @@ const toggleGallery = () => {
                   </div>
                 </div>
 
-                <!-- Strip Daftar Seluruh Leasing -->
                 <div class="pt-2 border-t border-slate-800">
                   <span class="text-[10px] text-slate-400 uppercase tracking-wider block mb-1.5 font-bold">Leasing Terdaftar Resmi:</span>
                   <div class="flex flex-wrap gap-1 text-[10px]">
@@ -693,7 +737,7 @@ const toggleGallery = () => {
         </div>
       </section>
 
-      <!-- 5. DEALER ADVANTAGES DENGAN DETAIL LEASING PARTNER -->
+      <!-- 5. DEALER ADVANTAGES -->
       <section class="w-full py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-10">
           <div class="text-center max-w-2xl mx-auto space-y-1">
@@ -719,7 +763,6 @@ const toggleGallery = () => {
               <p class="text-xs text-slate-500 leading-relaxed">Didukung fasilitas Sales, Service & Spareparts original Suzuki Genuine Parts dengan teknisi bersertifikasi nasional di Makassar.</p>
             </div>
 
-            <!-- LEASING & PEMBIAYAAN REKANAN -->
             <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3">
               <div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600">
                 <span class="material-symbols-outlined text-[28px]">account_balance</span>
@@ -741,7 +784,7 @@ const toggleGallery = () => {
         </div>
       </section>
 
-      <!-- 6. DELIVERY GALLERY (15 Foto, Judul & Tipe Mobil Sesuai Real Unit) -->
+      <!-- 6. DELIVERY GALLERY -->
       <section class="w-full py-16 bg-slate-50 border-t border-slate-200" id="galery-section">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
           <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
@@ -750,7 +793,6 @@ const toggleGallery = () => {
               <h2 class="text-2xl lg:text-3xl font-extrabold text-slate-900 mt-1">Bukti Kepuasan Pelanggan Suzuki Megah Makassar</h2>
               <p class="text-sm text-slate-500">Momen penyerahan unit mobil impian bersama Sales Executive CHAE SUZUKI kepada konsumen setia kami.</p>
             </div>
-            <!-- Tombol Toggle Galeri -->
             <button type="button" @click="toggleGallery" class="text-sm font-bold text-red-600 hover:text-red-700 flex items-center gap-1 cursor-pointer transition-colors self-start md:self-auto">
               <span>{{ showAllGallery ? 'Tampilkan Lebih Sedikit' : 'Lihat Seluruh Galery Serah Terima' }}</span>
               <span class="material-symbols-outlined text-[18px] transition-transform duration-300" :class="{ 'rotate-180': showAllGallery }">
@@ -759,7 +801,6 @@ const toggleGallery = () => {
             </button>
           </div>
 
-          <!-- Grid Testimoni -->
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-500">
             <div v-for="item in displayedTestimonials" :key="item.id"
                  class="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm flex flex-col justify-between hover:shadow-lg transition-all duration-300">
@@ -784,7 +825,6 @@ const toggleGallery = () => {
             </div>
           </div>
 
-          <!-- Tombol Bawah jika galeri belum dibuka -->
           <div v-if="!showAllGallery" class="text-center pt-2">
             <button type="button" @click="toggleGallery" class="px-6 py-2.5 bg-white hover:bg-slate-100 text-slate-800 text-xs font-bold rounded-xl border border-slate-300 shadow-sm transition-all inline-flex items-center gap-2 cursor-pointer">
               <span>Buka Seluruh Galery Serah Terima ({{ testimonials.length }} Foto)</span>
@@ -836,6 +876,71 @@ const toggleGallery = () => {
         </div>
       </section>
     </main>
+
+    <!-- MODAL DETAIL SPESIFIKASI MOBIL (INSTAN & TANPA 404) -->
+    <div v-if="activeModalCar" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm animate-fadeIn">
+      <div class="bg-white w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden border border-slate-200 flex flex-col max-h-[90vh]">
+        <!-- Header Modal -->
+        <div class="px-6 py-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+          <div>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">{{ activeModalCar.segment }}</span>
+            <h3 class="text-xl font-extrabold text-slate-900">{{ activeModalCar.name }}</h3>
+          </div>
+          <button @click="closeDetailModal" class="w-9 h-9 rounded-full bg-slate-200 hover:bg-slate-300 text-slate-700 flex items-center justify-center transition-colors cursor-pointer">
+            <span class="material-symbols-outlined text-[20px]">close</span>
+          </button>
+        </div>
+
+        <!-- Body Modal -->
+        <div class="p-6 overflow-y-auto space-y-5">
+          <div class="relative bg-slate-50 rounded-xl aspect-[16/9] flex items-center justify-center p-4 border border-slate-100">
+            <img :src="activeModalCar.image" :alt="activeModalCar.name" class="w-full h-full object-contain" />
+          </div>
+
+          <div class="flex items-center justify-between bg-emerald-50 border border-emerald-200 p-4 rounded-xl">
+            <div>
+              <span class="text-xs text-slate-500 font-medium">Harga OTR Makassar mulai:</span>
+              <p class="text-2xl font-black text-red-600">{{ activeModalCar.formattedPrice }}</p>
+            </div>
+            <div class="text-right">
+              <span class="text-xs text-emerald-800 font-bold block">{{ activeModalCar.dpPromo }}</span>
+              <span class="text-[11px] text-slate-500">Angsuran & Bunga Spesial</span>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <h4 class="font-bold text-sm text-slate-900 border-b pb-1.5">Spesifikasi & Keunggulan Utama</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
+                <span class="text-slate-400 block font-semibold">Tipe Mesin:</span>
+                <span class="text-slate-800 font-bold mt-0.5 block">{{ activeModalCar.specs?.mesin || 'Standar Resmi Pabrikan' }}</span>
+              </div>
+              <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
+                <span class="text-slate-400 block font-semibold">Pilihan Transmisi:</span>
+                <span class="text-slate-800 font-bold mt-0.5 block">{{ activeModalCar.specs?.transmisi || 'Manual & Otomatis' }}</span>
+              </div>
+            </div>
+            <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 text-xs">
+              <span class="text-slate-400 block font-semibold">Fitur Andalan:</span>
+              <span class="text-slate-800 font-bold mt-0.5 block">{{ activeModalCar.specs?.fitur || activeModalCar.tags.join(', ') }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Modal -->
+        <div class="px-6 py-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between gap-3">
+          <button type="button" @click="closeDetailModal" class="h-11 px-5 rounded-xl border border-slate-300 font-bold text-xs text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer">
+            Tutup
+          </button>
+          <a :href="`https://wa.me/6285299837635?text=Halo%20CHAE%20SUZUKI,%20saya%20mau%20konsultasi%20spesifikasi%20lengkap%20dan%20promo%20diskon%20${encodeURIComponent(activeModalCar.name)}`"
+             target="_blank"
+             class="h-11 px-6 bg-red-600 hover:bg-red-700 text-white font-bold text-xs rounded-xl flex items-center gap-2 transition-colors shadow-md">
+            <span class="material-symbols-outlined text-[18px]">chat</span>
+            <span>Tanya Diskon & Test Drive</span>
+          </a>
+        </div>
+      </div>
+    </div>
 
     <!-- FLOATING QUICK BOTTOM BAR -->
     <aside class="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 w-[90%] max-w-md">
@@ -932,3 +1037,13 @@ const toggleGallery = () => {
     </footer>
   </div>
 </template>
+
+<style scoped>
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+</style>
