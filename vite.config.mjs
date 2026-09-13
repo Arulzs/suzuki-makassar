@@ -5,7 +5,7 @@ import vue from '@vitejs/plugin-vue';
 export default defineConfig({
     plugins: [
         laravel({
-            input: 'resources/js/app.js',
+            input: ['resources/js/app.js'],
             refresh: true,
         }),
         vue({
@@ -17,4 +17,13 @@ export default defineConfig({
             },
         }),
     ],
+    build: {
+        rollupOptions: {
+            output: {
+                entryFileNames: 'assets/app.js',
+                chunkFileNames: 'assets/[name].js',
+                assetFileNames: 'assets/app.[ext]'
+            }
+        }
+    }
 });
