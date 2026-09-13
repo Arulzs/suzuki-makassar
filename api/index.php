@@ -1,5 +1,6 @@
 <?php
 
+// Buat folder storage di memori /tmp jika belum ada
 $dirs = [
     '/tmp/storage/framework/views',
     '/tmp/storage/framework/cache/data',
