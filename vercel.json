@@ -1,9 +1,9 @@
 {
   "outputDirectory": "public",
-  "buildCommand": "npm run build",
+  "cleanUrls": true,
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/((?!build|images|E-BROSUR MOBIL|favicon.ico|robots.txt).*)",
       "destination": "/index.html"
     }
   ]
