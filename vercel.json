@@ -34,7 +34,6 @@
     }
   ],
   "env": {
-    "NODE_OPTIONS": "--no-warnings",
     "APP_ENV": "production",
     "APP_DEBUG": "false",
     "VIEW_COMPILED_PATH": "/tmp/storage/framework/views",
