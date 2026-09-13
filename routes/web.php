@@ -7,7 +7,7 @@ Route::get('/', function () {
     return Inertia::render('Home');
 });
 
-// RUTE DINAMIS UNTUK SEMUA HALAMAN DETAIL MOBIL
+// Menangkap semua rute /mobil/* agar dirender oleh komponen CarDetail atau Home
 Route::get('/mobil/{slug}', function ($slug) {
     return Inertia::render('CarDetail', [
         'carSlug' => $slug

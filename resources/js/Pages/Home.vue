@@ -49,7 +49,7 @@ const prevSlide = () => {
   currentSlide.value = (currentSlide.value - 1 + heroSlides.length) % heroSlides.length;
 };
 
-// 2. Data Mobil Showroom (8 Unit Lengkap dengan DP Promo)
+// 2. Data Mobil Showroom (8 Unit Lengkap dengan Slug URL Aman SPA)
 const cars = [
   {
     id: 1,
@@ -65,7 +65,7 @@ const cars = [
     dpPromo: "DP Mulai Rp 20 Jt-an",
     dpValue: 20000000,
     tags: ["1.500cc SHVS", "7 Penumpang", "AT & MT"],
-    detailUrl: "/mobil/ertiga",
+    detailUrl: "/?car=ertiga",
     image: "/images/ERTIGA.jpeg"
   },
   {
@@ -80,7 +80,7 @@ const cars = [
     dpPromo: "DP Mulai Rp 25 Jt-an",
     dpValue: 25000000,
     tags: ["Ground Clearance 200mm", "E-Mirror Touchscreen", "Cruise Control"],
-    detailUrl: "/mobil/xl7",
+    detailUrl: "/?car=xl7",
     image: "/images/XL7.jpeg"
   },
   {
@@ -95,7 +95,7 @@ const cars = [
     dpPromo: "DP Mulai Rp 30 Jt-an",
     dpValue: 30000000,
     tags: ["Desain Coupé Gagah", "Pilihan Turbo/Hybrid", "Fitur Canggih"],
-    detailUrl: "/mobil/fronx",
+    detailUrl: "/?car=fronx",
     image: "/images/FRONX.jpeg"
   },
   {
@@ -110,7 +110,7 @@ const cars = [
     dpPromo: "DP Mulai Rp 100 Jt-an",
     dpValue: 100000000,
     tags: ["AllGrip Pro 4WD", "Ladder Frame Chassis", "Tersedia 3 & 5 Door"],
-    detailUrl: "/mobil/jimny",
+    detailUrl: "/?car=jimny",
     image: "/images/JIMNY.jpeg"
   },
   {
@@ -125,7 +125,7 @@ const cars = [
     dpPromo: "DP Mulai Rp 30 Jt-an",
     dpValue: 30000000,
     tags: ["Panoramic Sunroof", "360 View Camera", "Wireless Charger"],
-    detailUrl: "/mobil/grand-vitara",
+    detailUrl: "/?car=grand-vitara",
     image: "/images/GRAND VITARA.jpeg"
   },
   {
@@ -140,7 +140,7 @@ const cars = [
     dpPromo: "DP Mulai Rp 20 Jt-an",
     dpValue: 20000000,
     tags: ["Irit s/d 21 km/L", "Transmisi AGS/MT", "Dual SRS Airbag"],
-    detailUrl: "/mobil/spresso",
+    detailUrl: "/?car=spresso",
     image: "/images/S-PRESSO.jpeg"
   },
   {
@@ -155,7 +155,7 @@ const cars = [
     dpPromo: "DP Mulai Rp 50 Jt-an",
     dpValue: 50000000,
     tags: ["Kapasitas Lega 8 Kursi", "Tersedia Blind Van", "Mesin G15A Bandel"],
-    detailUrl: "/mobil/apv",
+    detailUrl: "/?car=apv",
     image: "/images/APV.jpeg"
   },
   {
@@ -170,7 +170,7 @@ const cars = [
     dpPromo: "DP Mulai Rp 10 Jt-an",
     dpValue: 10000000,
     tags: ["Daya Muat 1 Ton", "Bak Luas Pilihan AC/PS", "Mesin K15B-C Irit"],
-    detailUrl: "/mobil/carry",
+    detailUrl: "/?car=carry",
     image: "/images/CARRY.jpeg"
   }
 ];
@@ -363,17 +363,6 @@ const displayedTestimonials = computed(() => {
 const toggleGallery = () => {
   showAllGallery.value = !showAllGallery.value;
 };
-
-// Modal Detail Mobil (Client-Side)
-const activeCar = ref(null);
-const openDetail = (car) => {
-  activeCar.value = car;
-  document.body.style.overflow = 'hidden';
-};
-const closeDetail = () => {
-  activeCar.value = null;
-  document.body.style.overflow = '';
-};
 </script>
 
 <template>
@@ -534,7 +523,7 @@ const closeDetail = () => {
             </div>
           </div>
 
-          <!-- Car Grid (8 Unit Mobil) -->
+          <!-- Car Grid (8 Unit Mobil) Mengarah ke Link SPA Aman -->
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             <div v-for="car in filteredCars" :key="car.id" class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-200 flex flex-col justify-between">
               <div>
@@ -572,12 +561,12 @@ const closeDetail = () => {
                 </div>
               </div>
 
-              <!-- Tombol Detail Mobil & Chat Sales -->
+              <!-- Tombol Detail Mobil Mengarah ke Query SPA Aman -->
               <div class="p-5 pt-0 grid grid-cols-2 gap-2">
-                <button type="button" @click="openDetail(car)"
-                      class="h-10 bg-[#06182A] hover:bg-slate-800 text-white text-xs font-bold rounded-lg flex items-center justify-center transition-colors cursor-pointer">
+                <Link :href="car.detailUrl"
+                      class="h-10 bg-[#06182A] hover:bg-slate-800 text-white text-xs font-bold rounded-lg flex items-center justify-center transition-colors">
                   Detail Mobil
-                </button>
+                </Link>
 
                 <a :href="`https://wa.me/6285299837635?text=Halo%20CHAE%20SUZUKI,%20saya%20mau%20tanya%20paket%20${encodeURIComponent(car.dpPromo)}%20untuk%20${encodeURIComponent(car.name)}`" target="_blank"
                    class="h-10 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded-lg flex items-center justify-center gap-1 transition-colors shadow-sm">
@@ -839,58 +828,6 @@ const closeDetail = () => {
       </section>
     </main>
 
-    <!-- MODAL POPUP SPESIFIKASI MOBIL (INSTAN & AMAN DARI 404) -->
-    <div v-if="activeCar" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm">
-      <div class="bg-white w-full max-w-xl rounded-2xl shadow-2xl overflow-hidden border border-slate-200 flex flex-col max-h-[90vh]">
-        <div class="px-5 sm:px-6 py-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
-          <div>
-            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">{{ activeCar.segment }}</span>
-            <h3 class="text-lg sm:text-xl font-extrabold text-slate-900">{{ activeCar.name }}</h3>
-          </div>
-          <button @click="closeDetail" class="w-8 h-8 rounded-full bg-slate-200 hover:bg-slate-300 text-slate-700 flex items-center justify-center cursor-pointer">
-            ✕
-          </button>
-        </div>
-
-        <div class="p-5 sm:p-6 overflow-y-auto space-y-4">
-          <div class="bg-slate-50 rounded-xl aspect-[16/10] flex items-center justify-center p-4 border border-slate-100">
-            <img :src="activeCar.image" :alt="activeCar.name" class="w-full h-full object-contain" />
-          </div>
-
-          <div class="flex items-center justify-between bg-emerald-50 border border-emerald-200 p-4 rounded-xl">
-            <div>
-              <span class="text-xs text-slate-500 font-medium">Harga OTR Makassar mulai:</span>
-              <p class="text-xl sm:text-2xl font-black text-red-600">{{ activeCar.formattedPrice }}</p>
-            </div>
-            <div class="text-right">
-              <span class="text-xs text-emerald-800 font-bold block">{{ activeCar.dpPromo }}</span>
-              <span class="text-[10px] sm:text-[11px] text-slate-500">Angsuran & Bunga Spesial</span>
-            </div>
-          </div>
-
-          <div class="space-y-2">
-            <h4 class="font-bold text-xs text-slate-900 uppercase">Fitur & Keunggulan</h4>
-            <div class="flex flex-wrap gap-1.5">
-              <span v-for="(tag, i) in activeCar.tags" :key="i" class="text-xs font-semibold bg-slate-100 text-slate-700 px-3 py-1 rounded-lg border border-slate-200">
-                {{ tag }}
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="px-5 sm:px-6 py-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between gap-3">
-          <button type="button" @click="closeDetail" class="h-10 px-4 sm:px-5 rounded-xl border border-slate-300 font-bold text-xs text-slate-700 hover:bg-slate-100 cursor-pointer">
-            Tutup
-          </button>
-          <a :href="`https://wa.me/6285299837635?text=Halo%20CHAE%20SUZUKI,%20saya%20mau%20konsultasi%20promo%20dan%20spesifikasi%20${encodeURIComponent(activeCar.name)}`"
-             target="_blank"
-             class="h-10 px-4 sm:px-5 bg-red-600 hover:bg-red-700 text-white font-bold text-xs rounded-xl flex items-center gap-2 shadow-md">
-            <span>Tanya Promo ke Sales</span>
-          </a>
-        </div>
-      </div>
-    </div>
-
     <!-- FLOATING QUICK BOTTOM BAR -->
     <aside class="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-40 w-[92%] sm:w-[90%] max-w-md">
       <div class="bg-white/90 backdrop-blur-xl border border-slate-200 shadow-2xl rounded-full p-1.5 flex items-center justify-between gap-2">
@@ -958,7 +895,7 @@ const closeDetail = () => {
 
           <div class="space-y-3">
             <h4 class="font-bold text-sm text-white">Kontak Konsultan Resmi</h4>
-            <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700 space-y-1">
+            <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-200 space-y-1">
               <div class="flex items-center gap-1 text-emerald-400 text-xs font-bold">
                 <span class="material-symbols-outlined text-[16px]">verified</span> CHAE SUZUKI
               </div>
