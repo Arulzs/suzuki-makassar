@@ -1,45 +1,31 @@
 {
   "version": 2,
-  "framework": null,
   "outputDirectory": "public",
-  "functions": {
-    "api/index.php": {
-      "runtime": "vercel-php@0.7.4"
-    }
-  },
+  "cleanUrls": true,
   "routes": [
     {
       "src": "/build/(.*)",
-      "dest": "/public/build/$1"
+      "dest": "/build/$1"
     },
     {
       "src": "/images/(.*)",
-      "dest": "/public/images/$1"
+      "dest": "/images/$1"
     },
     {
       "src": "/E-BROSUR MOBIL/(.*)",
-      "dest": "/public/E-BROSUR MOBIL/$1"
+      "dest": "/E-BROSUR MOBIL/$1"
     },
     {
       "src": "/favicon.ico",
-      "dest": "/public/favicon.ico"
+      "dest": "/favicon.ico"
     },
     {
       "src": "/robots.txt",
-      "dest": "/public/robots.txt"
+      "dest": "/robots.txt"
     },
     {
       "src": "/(.*)",
-      "dest": "/api/index.php"
+      "dest": "/index.html"
     }
-  ],
-  "env": {
-    "APP_ENV": "production",
-    "APP_DEBUG": "false",
-    "VIEW_COMPILED_PATH": "/tmp/storage/framework/views",
-    "SESSION_DRIVER": "cookie",
-    "CACHE_STORE": "array",
-    "CACHE_DRIVER": "array",
-    "LOG_CHANNEL": "stderr"
-  }
+  ]
 }
