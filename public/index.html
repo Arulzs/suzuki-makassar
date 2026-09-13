@@ -8,8 +8,20 @@
     <link rel="stylesheet" href="/build/assets/app-trhKui5D.css" />
   </head>
   <body class="font-sans antialiased">
-    <div id="app" data-page='{"component":"Home","props":{},"url":"/","version":""}'></div>
+    <!-- Target render mount Inertia -->
+    <div id="app"></div>
 
-    <script type="module" defer src="/build/assets/app-DN45UCWu.js"></script>
+    <!-- Tag data yang dibaca oleh fungsi Wl(e) Inertia v2 -->
+    <script data-page="app" type="application/json">
+      {
+        "component": "Home",
+        "props": {},
+        "url": "/",
+        "version": ""
+      }
+    </script>
+
+    <!-- Script bundle aplikasi -->
+    <script type="module" src="/build/assets/app-DN45UCWu.js"></script>
   </body>
 </html>
