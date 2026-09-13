@@ -1,33 +1,33 @@
 {
-  "_Navbar-B3CBPDd6.js": {
-    "file": "assets/Navbar-B3CBPDd6.js",
+  "_Navbar-BbGJ5GM5.js": {
+    "file": "assets/Navbar-BbGJ5GM5.js",
     "name": "Navbar",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/Pages/CarDetail.vue": {
-    "file": "assets/CarDetail-D9LkQ-FJ.js",
+    "file": "assets/CarDetail-C9gfYIkm.js",
     "name": "CarDetail",
     "src": "resources/js/Pages/CarDetail.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Navbar-B3CBPDd6.js"
+      "_Navbar-BbGJ5GM5.js"
     ]
   },
   "resources/js/Pages/Home.vue": {
-    "file": "assets/Home-CxNBRCEi.js",
+    "file": "assets/Home-B8Eoq0uk.js",
     "name": "Home",
     "src": "resources/js/Pages/Home.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Navbar-B3CBPDd6.js"
+      "_Navbar-BbGJ5GM5.js"
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-Dl4mIZLW.js",
+    "file": "assets/app-DN45UCWu.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -36,7 +36,7 @@
       "resources/js/Pages/Home.vue"
     ],
     "css": [
-      "assets/app-HVltidV-.css"
+      "assets/app-trhKui5D.css"
     ]
   }
 }

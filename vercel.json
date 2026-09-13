@@ -1,31 +1,10 @@
 {
-  "version": 2,
   "outputDirectory": "public",
-  "cleanUrls": true,
-  "routes": [
+  "buildCommand": "npm run build",
+  "rewrites": [
     {
-      "src": "/build/(.*)",
-      "dest": "/build/$1"
-    },
-    {
-      "src": "/images/(.*)",
-      "dest": "/images/$1"
-    },
-    {
-      "src": "/E-BROSUR MOBIL/(.*)",
-      "dest": "/E-BROSUR MOBIL/$1"
-    },
-    {
-      "src": "/favicon.ico",
-      "dest": "/favicon.ico"
-    },
-    {
-      "src": "/robots.txt",
-      "dest": "/robots.txt"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
