@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="{{ asset('images/suzuki-logo.png') }}?v=1">
+    <meta name="google-site-verification" content="4l-ycFYuRaGiwPCREXix43AdML5l0Aso9D4AIItQcQ0" />
     <link rel="shortcut icon" type="image/png" href="{{ asset('images/suzuki-logo.png') }}?v=1">
     <title>Suzuki Megah Makassar</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
