@@ -1,19 +1,11 @@
 {
-  "_Navbar.js": {
-    "file": "assets/Navbar.js",
-    "name": "Navbar",
-    "imports": [
-      "resources/js/app.js"
-    ]
-  },
   "resources/js/Pages/CarDetail.vue": {
     "file": "assets/CarDetail.js",
     "name": "CarDetail",
     "src": "resources/js/Pages/CarDetail.vue",
     "isDynamicEntry": true,
     "imports": [
-      "resources/js/app.js",
-      "_Navbar.js"
+      "resources/js/app.js"
     ]
   },
   "resources/js/Pages/Home.vue": {
@@ -23,7 +15,7 @@
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Navbar.js"
+      "resources/js/Pages/CarDetail.vue"
     ]
   },
   "resources/js/app.js": {

@@ -336,7 +336,10 @@ const sendCalculationWa = () => {
       <section class="w-full bg-white border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500">
           <nav class="flex items-center gap-1.5 font-medium">
-            <Link href="/" class="hover:text-red-600 transition-colors font-bold text-slate-700">Beranda</Link>
+            <button type="button" @click="$emit('back')" class="inline-flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-red-600 transition-colors cursor-pointer">
+              <span class="material-symbols-outlined text-[16px]">arrow_back</span>
+              <span>Kembali ke Beranda</span>
+          </button>
             <span class="material-symbols-outlined text-[14px]">chevron_right</span>
             <Link href="/#lineup-section" class="hover:text-red-600 transition-colors">Katalog Mobil</Link>
             <span class="material-symbols-outlined text-[14px]">chevron_right</span>
