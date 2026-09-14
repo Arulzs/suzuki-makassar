@@ -11,12 +11,16 @@ const props = defineProps({
 
 defineEmits(['back']);
 
-// Helper encoding path gambar agar aman dari spasi dan tanda '+'
-const getCarColorPath = (folder, fileName) => {
-  return `/images/Gambar%20mobil%20%2B%20warna/${folder}/${fileName}`;
+// Path helper: encode setiap bagian path (folder & nama file) agar karakter
+// spasi dan '+' pada nama file (mis. "KINETIC YELLOW 2 + PEARL BLUISH BLACK 4")
+// tidak salah diartikan server sebagai spasi/kosong dan menyebabkan 404.
+const encodePart = (part) => encodeURIComponent(part);
+
+const getPath = (folder, fileName) => {
+  return `/images/${encodePart('Gambar mobil + warna')}/${encodePart(folder)}/${encodePart(fileName)}`;
 };
 
-// Database Lengkap Seluruh Mobil dengan Gambar Warna Persis Isi Folder
+// Database Lengkap Sesuai Nama File Asli di Folder public/images/Gambar mobil + warna/
 const carsDatabase = {
   'ertiga': {
     name: "Suzuki All New Ertiga",
@@ -31,13 +35,13 @@ const carsDatabase = {
     transmission: "AT / 5-MT",
     batteryWarranty: "Garansi Baterai 8 Tahun",
     colors: [
-      { name: "Ertiga Cool Black", hex: "#161616", image: getCarColorPath("ERTIGA", "ERTIGA COOL BLACK.jpeg") },
-      { name: "Ertiga Pearl Snow White", hex: "#FFFFFF", image: getCarColorPath("ERTIGA", "ERTIGA PEARL SNOW WHITE.jpeg") },
-      { name: "Ertiga Metallic Magma Grey", hex: "#525458", image: getCarColorPath("ERTIGA", "ERTIGA METALLIC MAGMA GREY.jpeg") },
-      { name: "Ertiga Metallic Silky Silver", hex: "#D2D4D7", image: getCarColorPath("ERTIGA", "ERTIGA METALLIC SILKY SILVER.jpeg") },
-      { name: "Ertiga Pearl Burgundy Red", hex: "#5E1825", image: getCarColorPath("ERTIGA", "ERTIGA PEARL BURGUNDY RED.jpeg") },
-      { name: "Ertiga Brave Khaki", hex: "#635D50", image: getCarColorPath("ERTIGA", "ERTIGA BRAVE KHAKI.jpeg") },
-      { name: "Ertiga Pearl Radiant Red", hex: "#8F1522", image: getCarColorPath("ERTIGA", "ERTIGA PEARL RADIANT RED.jpeg") }
+      { name: "Ertiga Cool Black", hex: "#161616", image: getPath("ERTIGA", "ERTIGA COOL BLACK.jpeg") },
+      { name: "Ertiga Pearl Snow White", hex: "#FFFFFF", image: getPath("ERTIGA", "ERTIGA PEARL SNOW WHITE.jpeg") },
+      { name: "Ertiga Metallic Magma Grey", hex: "#525458", image: getPath("ERTIGA", "ERTIGA METALLIC MAGMA GREY.jpeg") },
+      { name: "Ertiga Metallic Silky Silver", hex: "#D2D4D7", image: getPath("ERTIGA", "ERTIGA METALLIC SILKY SILVER.jpeg") },
+      { name: "Ertiga Pearl Burgundy Red", hex: "#5E1825", image: getPath("ERTIGA", "ERTIGA PEARL BURGUNDY RED.jpeg") },
+      { name: "Ertiga Brave Khaki", hex: "#635D50", image: getPath("ERTIGA", "ERTIGA BRAVE KHAKI.jpeg") },
+      { name: "Ertiga Pearl Radiant Red", hex: "#8F1522", image: getPath("ERTIGA", "ERTIGA PEARL RADIANT RED.jpeg") }
     ],
     variants: [
       { id: "ga", name: "Ertiga GA", transmission: "MANUAL (5-MT)", statusTag: "Ready Stock", price: 269700000, formattedPrice: "Rp 269.700.000", dpStart: "DP Mulai Rp 20 Jt-an", isFlagship: false, specs: ["Mesin 1.5L K15B Bertenaga", "AC Double Blower Digital", "Dual SRS Airbag & ABS", "Tilt Steering & Power Window"] },
@@ -58,10 +62,10 @@ const carsDatabase = {
     transmission: "AT / 5-MT",
     batteryWarranty: "Garansi Baterai 8 Tahun",
     colors: [
-      { name: "XL7 Pearl Snow White - Black", hex: "#FFFFFF", secondaryHex: "#1C1D21", isDualTone: true, image: getCarColorPath("XL7", "XL7 PEARL SNOW WHITE - BLACK.png") },
-      { name: "XL7 Marble Black", hex: "#1C1D21", image: getCarColorPath("XL7", "XL7 MARBLE BLACK.png") },
-      { name: "XL7 Savanna Ivory - Black", hex: "#C7BAA7", secondaryHex: "#1C1D21", isDualTone: true, image: getCarColorPath("XL7", "XL7 SAVANNA IVORY - BLACK.png") },
-      { name: "XL7 Ice Grayish Blue - Black", hex: "#6D8292", secondaryHex: "#1C1D21", isDualTone: true, image: getCarColorPath("XL7", "XL7 ICE GRAYISH BLUE - BLACK.png") }
+      { name: "XL7 Pearl Snow White - Black", hex: "#FFFFFF", secondaryHex: "#1C1D21", isDualTone: true, image: getPath("XL7", "XL7 PEARL SNOW WHITE - BLACK.png") },
+      { name: "XL7 Marble Black", hex: "#1C1D21", image: getPath("XL7", "XL7 MARBLE BLACK.png") },
+      { name: "XL7 Savanna Ivory - Black", hex: "#C7BAA7", secondaryHex: "#1C1D21", isDualTone: true, image: getPath("XL7", "XL7 SAVANNA IVORY - BLACK.png") },
+      { name: "XL7 Ice Grayish Blue - Black", hex: "#6D8292", secondaryHex: "#1C1D21", isDualTone: true, image: getPath("XL7", "XL7 ICE GRAYISH BLUE - BLACK.png") }
     ],
     variants: [
       { id: "zeta-mt", name: "XL7 Zeta MT", transmission: "MANUAL (5-MT)", statusTag: "Ready Stock", price: 305300000, formattedPrice: "Rp 305.300.000", dpStart: "DP Mulai Rp 25 Jt-an", isFlagship: false, specs: ["Ground Clearance 200mm", "LED Headlamp with DRL", "Roof Rail Fungsional", "Velg Alloy 16 Inch"] },
@@ -84,13 +88,13 @@ const carsDatabase = {
     transmission: "AT / MT",
     batteryWarranty: "Garansi Baterai 8 Tahun",
     colors: [
-      { name: "Fronx Metallic Magma Gray", hex: "#4C4E52", image: getCarColorPath("FRONX", "FRONX METALIC MAGMA GRAY.png") },
-      { name: "Fronx Savanna Ivory", hex: "#D6CABA", image: getCarColorPath("FRONX", "FRONX SAVANNA IVORY.png") },
-      { name: "Fronx Pearl Snow White", hex: "#FFFFFF", image: getCarColorPath("FRONX", "FRONX PEARL SNOW WHITE.png") },
-      { name: "Fronx Savanna Ivory - Black", hex: "#BAAC99", secondaryHex: "#111111", isDualTone: true, image: getCarColorPath("FRONX", "FRONX SAVANNA IVORY - BLACK.png") },
-      { name: "Fronx Pearl Snow White - Black", hex: "#EBEBEB", secondaryHex: "#111111", isDualTone: true, image: getCarColorPath("FRONX", "FRONX PEARL SNOW WHITE - BLACK.png") },
-      { name: "Fronx Ice Grayish Blue - Black", hex: "#5C7384", secondaryHex: "#111111", isDualTone: true, image: getCarColorPath("FRONX", "FRONX ICE GRAYISH BLUE - BLACK.png") },
-      { name: "Fronx Cool Black with Black Grille", hex: "#111111", image: getCarColorPath("FRONX", "FRONX COOL BLACK WITH BLACK GRILLE.png") }
+      { name: "Fronx Metallic Magma Gray", hex: "#4C4E52", image: getPath("FRONX", "FRONX METALIC MAGMA GRAY.png") },
+      { name: "Fronx Savanna Ivory", hex: "#D6CABA", image: getPath("FRONX", "FRONX SAVANNA IVORY.png") },
+      { name: "Fronx Pearl Snow White", hex: "#FFFFFF", image: getPath("FRONX", "FRONX PEARL SNOW WHITE.png") },
+      { name: "Fronx Savanna Ivory - Black", hex: "#BAAC99", secondaryHex: "#111111", isDualTone: true, image: getPath("FRONX", "FRONX SAVANNA IVORY - BLACK.png") },
+      { name: "Fronx Pearl Snow White - Black", hex: "#EBEBEB", secondaryHex: "#111111", isDualTone: true, image: getPath("FRONX", "FRONX PEARL SNOW WHITE - BLACK.png") },
+      { name: "Fronx Ice Grayish Blue - Black", hex: "#5C7384", secondaryHex: "#111111", isDualTone: true, image: getPath("FRONX", "FRONX ICE GRAYISH BLUE - BLACK.png") },
+      { name: "Fronx Cool Black with Black Grille", hex: "#111111", image: getPath("FRONX", "FRONX COOL BLACK WITH BLACK GRILLE.png") }
     ],
     variants: [
       { id: "gl-mt", name: "Fronx GL MT", transmission: "MANUAL (5-MT)", statusTag: "Ready Unit", price: 279500000, formattedPrice: "Rp 279.500.000", dpStart: "DP Mulai Rp 30 Jt-an", isFlagship: false, specs: ["Desain Coupé Sporty", "Headlamp LED Projector", "Wireless Phone Connectivity", "Electronic Stability Program"] },
@@ -113,19 +117,19 @@ const carsDatabase = {
     transmission: "AUTOMATIC (4-AT)",
     batteryWarranty: "Garansi Mesin Resmi",
     colors: [
-      { name: "Jimny 5 Jungle Green 2", hex: "#2E3B32", image: getCarColorPath("JIMNY", "JIMNY 5 JUNGLE GREEN 2.jpg") },
-      { name: "Jimny 5 Kinetic Yellow 2 + Pearl Bluish Black 4", hex: "#D6DF23", secondaryHex: "#171B20", isDualTone: true, image: getCarColorPath("JIMNY", "JIMNY 5 KINETIC YELLOW 2 + PEARL BLUISH BLACK 4.jpg") },
-      { name: "Jimny 5 Metallic Chiffon Ivory 2 + Pearl Bluish Black 4", hex: "#D2C59D", secondaryHex: "#171B20", isDualTone: true, image: getCarColorPath("JIMNY", "JIMNY 5 METALLIC CHIFFON IVORY 2 + PEARL BLUISH BLACK 4.jpg") },
-      { name: "Jimny 5 Metallic Sizzling Red + Pearl Bluish Black 4", hex: "#9E1E24", secondaryHex: "#171B20", isDualTone: true, image: getCarColorPath("JIMNY", "JIMNY 5 METALLIC SIZZLING RED + PEARL BLUISH BLACK 4.jpg") },
-      { name: "Jimny 5 Bluish Black 4", hex: "#171B20", image: getCarColorPath("JIMNY", "JIMNY 5 BLUISH BLACK 4.jpg") },
-      { name: "Jimny 5 Granite Gray Metallic", hex: "#4B4E51", image: getCarColorPath("JIMNY", "JIMNY 5 GRANITE GRAY METALLIC.jpg") },
-      { name: "Jimny 3 Bluish Black Pearl 3", hex: "#1A1D24", image: getCarColorPath("JIMNY", "JIMNY 3 BLUISH BLACK PEARL 3.jpg") },
-      { name: "Jimny 3 Kinetic Yellow 2 + Pearl Bluish Black 4", hex: "#DCE528", secondaryHex: "#1A1D24", isDualTone: true, image: getCarColorPath("JIMNY", "JIMNY 3 KINETIC YELLOW 2 + PEARL BLUISH BLACK 4.jpg") },
-      { name: "Jimny 3 Medium Grey", hex: "#5C6063", image: getCarColorPath("JIMNY", "JIMNY 3 MEDIUM GREY.jpg") },
-      { name: "Jimny 3 Metallic Chiffon Ivory 2 + Pearl Bluish Black 4", hex: "#CCC09B", secondaryHex: "#1A1D24", isDualTone: true, image: getCarColorPath("JIMNY", "JIMNY 3 METALLIC CHIFFON IVORY 2 + PEARL BLUISH BLACK 4.jpg") },
-      { name: "Jimny 3 Pearl White", hex: "#F4F5F7", image: getCarColorPath("JIMNY", "JIMNY 3 PEARL WHITE.jpg") },
-      { name: "Jimny 3 Silky Silver Metallic", hex: "#CBCDD0", image: getCarColorPath("JIMNY", "JIMNY 3 SILKY SILVER METALLIC.jpg") },
-      { name: "Jimny 4 Metallic Brisk Blue + Pearl Bluish Black 3", hex: "#0066B3", secondaryHex: "#1A1D24", isDualTone: true, image: getCarColorPath("JIMNY", "JIMNY 4 METALLIC BRISK BLUE + PEARL BLUISH BLACK 3.jpg") }
+      { name: "Jimny 3 Bluish Black Pearl 3", hex: "#1A1D24", image: getPath("JIMNY", "JIMNY 3 BLUISH BLACK PEARL 3.jpeg") },
+      { name: "Jimny 3 Kinetic Yellow 2 + Pearl Bluish Black 4", hex: "#DCE528", secondaryHex: "#1A1D24", isDualTone: true, image: getPath("JIMNY", "JIMNY 3 KINETIC YELLOW 2 + PEARL BLUISH BLACK 4.jpeg") },
+      { name: "Jimny 3 Medium Grey", hex: "#5C6063", image: getPath("JIMNY", "JIMNY 3 MEDIUM GREY.jpeg") },
+      { name: "Jimny 3 Metallic Chiffon Ivory 2 + Pearl Bluish Black 4", hex: "#CCC09B", secondaryHex: "#1A1D24", isDualTone: true, image: getPath("JIMNY", "JIMNY 3 METALLIC CHIFFON IVORY 2 + PEARL BLUISH BLACK 4.jpeg") },
+      { name: "Jimny 3 Pearl White", hex: "#F4F5F7", image: getPath("JIMNY", "JIMNY 3 PEARL WHITE.jpeg") },
+      { name: "Jimny 3 Silky Silver Metallic", hex: "#CBCDD0", image: getPath("JIMNY", "JIMNY 3 SILKY SILVER METALLIC.jpeg") },
+      { name: "Jimny 4 Metallic Brisk Blue + Pearl Bluish Black 3", hex: "#0066B3", secondaryHex: "#1A1D24", isDualTone: true, image: getPath("JIMNY", "JIMNY 4 METALLIC BRISK BLUE + PEARL BLUISH BLACK 3.jpeg") },
+      { name: "Jimny 5 Bluish Black 4", hex: "#171B20", image: getPath("JIMNY", "JIMNY 5 BLUISH BLACK 4.jpeg") },
+      { name: "Jimny 5 Granite Gray Metallic", hex: "#4B4E51", image: getPath("JIMNY", "JIMNY 5 GRANITE GRAY METALLIC.jpeg") },
+      { name: "Jimny 5 Jungle Green 2", hex: "#2E3B32", image: getPath("JIMNY", "JIMNY 5 JUNGLE GREEN 2.jpeg") },
+      { name: "Jimny 5 Kinetic Yellow 2 + Pearl Bluish Black 4", hex: "#D6DF23", secondaryHex: "#171B20", isDualTone: true, image: getPath("JIMNY", "JIMNY 5 KINETIC YELLOW 2 + PEARL BLUISH BLACK 4.jpeg") },
+      { name: "Jimny 5 Metallic Chiffon Ivory 2 + Pearl Bluish Black 4", hex: "#D2C59D", secondaryHex: "#171B20", isDualTone: true, image: getPath("JIMNY", "JIMNY 5 METALLIC CHIFFON IVORY 2 + PEARL BLUISH BLACK 4.jpeg") },
+      { name: "Jimny 5 Metallic Sizzling Red + Pearl Bluish Black 4", hex: "#9E1E24", secondaryHex: "#171B20", isDualTone: true, image: getPath("JIMNY", "JIMNY 5 METALLIC SIZZLING RED + PEARL BLUISH BLACK 4.jpeg") }
     ],
     variants: [
       { id: "3d-at", name: "Jimny 3-Door AT", transmission: "AUTOMATIC 4WD", statusTag: "Ikonik 4x4", price: 522100000, formattedPrice: "Rp 522.100.000", dpStart: "DP Mulai Rp 100 Jt-an", isFlagship: false, specs: ["AllGrip Pro 4WD (2H, 4H, 4L)", "Ladder Frame Chassis Kokoh", "Brake LSD Traction Control", "Hill Descent & Hold Control"] },
@@ -147,10 +151,10 @@ const carsDatabase = {
     transmission: "6-AT with Paddle Shift",
     batteryWarranty: "Garansi Baterai 8 Tahun",
     colors: [
-      { name: "Grand Vitara Prime Splendid Silver + Black", hex: "#BFC3C7", secondaryHex: "#14171A", isDualTone: true, image: getCarColorPath("GRAND VITARA", "GRAND VITARA PRIME SPLENDID SILVER + BLACK.png") },
-      { name: "Grand Vitara Pearl Arctic White + Black", hex: "#EEEEEE", secondaryHex: "#14171A", isDualTone: true, image: getCarColorPath("GRAND VITARA", "GRAND VITARA PEARL ARCTIC WHITE + BLACK.png") },
-      { name: "Grand Vitara Pearl Midnight Black", hex: "#14171A", image: getCarColorPath("GRAND VITARA", "GRAND VITARA PEARL MIDNIGHT BLACK.png") },
-      { name: "Grand Vitara Pearl Cave Black", hex: "#0B0C0E", image: getCarColorPath("GRAND VITARA", "GRAND VITARA PEARL CAVE BLACK.png") }
+      { name: "Grand Vitara Prime Splendid Silver + Black", hex: "#BFC3C7", secondaryHex: "#14171A", isDualTone: true, image: getPath("GRAND VITARA", "GRAND VITARA PRIME SPLENDID SILVER + BLACK.png") },
+      { name: "Grand Vitara Pearl Arctic White + Black", hex: "#EEEEEE", secondaryHex: "#14171A", isDualTone: true, image: getPath("GRAND VITARA", "GRAND VITARA PEARL ARCTIC WHITE + BLACK.png") },
+      { name: "Grand Vitara Pearl Midnight Black", hex: "#14171A", image: getPath("GRAND VITARA", "GRAND VITARA PEARL MIDNIGHT BLACK.png") },
+      { name: "Grand Vitara Pearl Cave Black", hex: "#0B0C0E", image: getPath("GRAND VITARA", "GRAND VITARA PEARL CAVE BLACK.png") }
     ],
     variants: [
       { id: "gx-st", name: "Grand Vitara New MC GX Single Tone", transmission: "6-SPEED AT", statusTag: "Ready Unit", price: 434000000, formattedPrice: "Rp 434.000.000", dpStart: "DP Mulai Rp 30 Jt-an", isFlagship: false, specs: ["Panoramic Sunroof Luas", "360 Surround View Camera", "Head-Up Display (HUD)", "Wireless Charger Smartphone"] },
@@ -170,11 +174,11 @@ const carsDatabase = {
     transmission: "AGS / 5-MT",
     batteryWarranty: "Garansi Mesin Resmi",
     colors: [
-      { name: "S-Presso Granite Gray Metallic", hex: "#484A4D", image: getCarColorPath("S-PRESSO", "S-PRESSO GRANITE GRAY METALLIC.jpg") },
-      { name: "S-Presso White", hex: "#FFFFFF", image: getCarColorPath("S-PRESSO", "S-PRESSO WHITE.jpg") },
-      { name: "S-Presso Silky Silver Metallic", hex: "#CECFD2", image: getCarColorPath("S-PRESSO", "S-PRESSO SILKY SILVER METALLIC.jpg") },
-      { name: "S-Presso Solid Fire Red", hex: "#BE1E2D", image: getCarColorPath("S-PRESSO", "S-PRESSO SOLID FIRE RED.jpg") },
-      { name: "S-Presso Sizzle Orange", hex: "#E85D22", image: getCarColorPath("S-PRESSO", "S-PRESSO SIZZLE ORANGE.jpg") }
+      { name: "S-Presso Granite Gray Metallic", hex: "#484A4D", image: getPath("S-PRESSO", "S-PRESSO GRANITE GRAY METALLIC.jpeg") },
+      { name: "S-Presso Silky Silver Metallic", hex: "#CECFD2", image: getPath("S-PRESSO", "S-PRESSO SILKY SILVER METALLIC.jpeg") },
+      { name: "S-Presso Sizzle Orange", hex: "#E85D22", image: getPath("S-PRESSO", "S-PRESSO SIZZLE ORANGE.jpeg") },
+      { name: "S-Presso Solid Fire Red", hex: "#BE1E2D", image: getPath("S-PRESSO", "S-PRESSO SOLID FIRE RED.jpeg") },
+      { name: "S-Presso White", hex: "#FFFFFF", image: getPath("S-PRESSO", "S-PRESSO WHITE.jpeg") }
     ],
     variants: [
       { id: "mt", name: "S-Presso MT", transmission: "MANUAL (5-MT)", statusTag: "Super Irit", price: 193500000, formattedPrice: "Rp 193.500.000", dpStart: "DP Mulai Rp 20 Jt-an", isFlagship: false, specs: ["Mesin Dual Jet K10C Baru", "Dual SRS Airbag & Rem ABS", "Ground Clearance 180mm", "Headunit Touchscreen 7-inch"] },
@@ -194,11 +198,11 @@ const carsDatabase = {
     transmission: "MANUAL (5-MT)",
     batteryWarranty: "Garansi Mesin Resmi",
     colors: [
-      { name: "APV White", hex: "#FFFFFF", image: getCarColorPath("APV", "APV WHITE.jpeg") },
-      { name: "APV Burgundy Red", hex: "#5C1523", image: getCarColorPath("APV", "APV BURGUNDY RED.jpeg") },
-      { name: "APV Graphite Grey Metallic", hex: "#46484B", image: getCarColorPath("APV", "APV GRAPHITE GREY METALLIC.jpeg") },
-      { name: "APV Silky Silver Metallic", hex: "#CACBCE", image: getCarColorPath("APV", "APV SILKY SILVER METALLIC.jpeg") },
-      { name: "APV Black", hex: "#111111", image: getCarColorPath("APV", "APV BLACK.jpeg") }
+      { name: "APV White", hex: "#FFFFFF", image: getPath("APV", "APV WHITE.jpeg") },
+      { name: "APV Burgundy Red", hex: "#5C1523", image: getPath("APV", "APV BURGUNDY RED.jpeg") },
+      { name: "APV Graphite Grey Metallic", hex: "#46484B", image: getPath("APV", "APV GRAPHITE GREY METALLIC.jpeg") },
+      { name: "APV Silky Silver Metallic", hex: "#CACBCE", image: getPath("APV", "APV SILKY SILVER METALLIC.jpeg") },
+      { name: "APV Black", hex: "#111111", image: getPath("APV", "APV BLACK.jpeg") }
     ],
     variants: [
       { id: "blind-van", name: "APV Blind Van", transmission: "MANUAL (5-MT)", statusTag: "Kargo Usaha", price: 197100000, formattedPrice: "Rp 197.100.000", dpStart: "DP Mulai Rp 50 Jt-an", isFlagship: false, specs: ["Kapasitas Kargo Luas & Tertutup", "Daya Angkut Ekstra Tangguh", "Mesin G15A Bandel & Mudah Dirawat", "AC Single Blower Dingin"] },
@@ -221,9 +225,9 @@ const carsDatabase = {
     transmission: "MANUAL (5-MT)",
     batteryWarranty: "Garansi Mesin Resmi",
     colors: [
-      { name: "Carry Real Black", hex: "#161616", image: getCarColorPath("CARRY", "CARRY REAL BLACK.jpeg") },
-      { name: "Carry Silky Silver", hex: "#D0D2D5", image: getCarColorPath("CARRY", "CARRY SILKY SILVER.jpeg") },
-      { name: "Carry White", hex: "#FFFFFF", image: getCarColorPath("CARRY", "CARRY WHITE.jpeg") }
+      { name: "Carry Real Black", hex: "#161616", image: getPath("CARRY", "CARRY REAL BLACK.jpeg") },
+      { name: "Carry Silky Silver", hex: "#D0D2D5", image: getPath("CARRY", "CARRY SILKY SILVER.jpeg") },
+      { name: "Carry White", hex: "#FFFFFF", image: getPath("CARRY", "CARRY WHITE.jpeg") }
     ],
     variants: [
       { id: "fd", name: "Carry Flat Deck (FD)", transmission: "MANUAL (5-MT)", statusTag: "Ready Stock", price: 198200000, formattedPrice: "Rp 198.200.000", dpStart: "DP Mulai Rp 10 Jt-an", isFlagship: false, specs: ["Bak Standar Buka Belakang", "Daya Angkut Kuat 1 Ton", "Sasis Tebal Double Reinforcement", "Immobilizer Kunci Aman"] },
@@ -234,7 +238,7 @@ const carsDatabase = {
   }
 };
 
-// Deteksi Mobil Aktif Berdasarkan Props atau URL Query Parameter
+// Deteksi Mobil Aktif
 const activeSlug = computed(() => {
   if (props.carSlug) return props.carSlug.toLowerCase();
   if (typeof window !== 'undefined') {
@@ -252,7 +256,7 @@ const currentCar = computed(() => {
 const variants = computed(() => currentCar.value.variants || []);
 const availableColors = computed(() => currentCar.value.colors || []);
 
-// State Reaktif (Diinisialisasi di sini sebelum watcher dijalankan)
+// State Reaktif
 const activeColor = ref(null);
 const selectedPrice = ref(269700000);
 const dpPercent = ref(20);
@@ -273,7 +277,7 @@ watch(currentCar, (newCar) => {
   }
 }, { immediate: true });
 
-// Gambar Mobil Utama yang Aktif Berdasarkan Warna yang Dipilih
+// Gambar Mobil Utama Reaktif
 const displayImage = computed(() => {
   if (activeColor.value && activeColor.value.image) {
     return activeColor.value.image;
@@ -281,10 +285,32 @@ const displayImage = computed(() => {
   return currentCar.value?.image || '/images/ERTIGA.jpeg';
 });
 
-// Fallback jika browser gagal memuat file warna
+// Fallback Cerdas Multi-Ekstensi
+// Nama file warna di database sudah benar (sesuai folder), tapi ekstensi asli
+// tiap file bisa beda-beda (.jpg / .jpeg / .png / .webp, huruf besar/kecil).
+// Fungsi ini otomatis mencoba semua kemungkinan ekstensi sebelum jatuh ke gambar default.
+const extensionFallbacks = ['.jpg', '.jpeg', '.png', '.webp', '.JPG', '.JPEG', '.PNG'];
+
 const onImageError = (e) => {
-  if (currentCar.value && e.target.src !== currentCar.value.image) {
-    e.target.src = currentCar.value.image;
+  const img = e.target;
+  const currentSrc = img.src;
+
+  // Ambil path dasar tanpa ekstensi (buang ekstensi apapun yang sedang dicoba)
+  const baseSrc = currentSrc.replace(/\.(jpe?g|png|webp)$/i, '');
+
+  // Index percobaan disimpan di elemen img itu sendiri
+  let attempt = parseInt(img.dataset.extAttempt || '0', 10);
+
+  if (attempt < extensionFallbacks.length) {
+    img.dataset.extAttempt = String(attempt + 1);
+    img.src = baseSrc + extensionFallbacks[attempt];
+    return;
+  }
+
+  // Semua ekstensi sudah dicoba dan tetap gagal -> pakai gambar utama mobil sebagai fallback terakhir
+  if (currentCar.value && img.src !== currentCar.value.image) {
+    img.dataset.extAttempt = String(extensionFallbacks.length); // stop looping lagi
+    img.src = currentCar.value.image;
   }
 };
 
@@ -404,7 +430,8 @@ const sendCalculationWa = () => {
                   </div>
 
                   <!-- GAMBAR MOBIL UTAMA -->
-                  <img :src="displayImage"
+                  <img :key="displayImage"
+                       :src="displayImage"
                        :alt="activeColor?.name || currentCar.name"
                        @error="onImageError"
                        class="w-full h-full object-contain p-2 transition-transform duration-500 hover:scale-105" />
