@@ -230,13 +230,15 @@ const carsDatabase = {
   }
 };
 
-// Deteksi Mobil Aktif Berdasarkan URL atau Props
+// Deteksi Mobil Aktif Berdasarkan Props atau URL Search Parameter
 const activeSlug = computed(() => {
   if (props.carSlug) return props.carSlug.toLowerCase();
-  const path = page.url || window.location.pathname;
-  const segments = path.split('/').filter(Boolean);
-  const lastSegment = segments[segments.length - 1] || 'ertiga';
-  return lastSegment.toLowerCase();
+  if (typeof window !== 'undefined') {
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get('car');
+    if (q) return q.toLowerCase();
+  }
+  return 'ertiga';
 });
 
 const currentCar = computed(() => {
@@ -339,9 +341,9 @@ const sendCalculationWa = () => {
             <button type="button" @click="$emit('back')" class="inline-flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-red-600 transition-colors cursor-pointer">
               <span class="material-symbols-outlined text-[16px]">arrow_back</span>
               <span>Kembali ke Beranda</span>
-          </button>
+            </button>
             <span class="material-symbols-outlined text-[14px]">chevron_right</span>
-            <Link href="/#lineup-section" class="hover:text-red-600 transition-colors">Katalog Mobil</Link>
+            <a href="/#lineup-section" class="hover:text-red-600 transition-colors">Katalog Mobil</a>
             <span class="material-symbols-outlined text-[14px]">chevron_right</span>
             <span class="text-slate-900 font-bold">{{ currentCar.name }}</span>
           </nav>

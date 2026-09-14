@@ -3,7 +3,7 @@ import { ref, computed, onMounted, onUnmounted } from 'vue';
 import Navbar from '../Components/Navbar.vue';
 import CarDetail from './CarDetail.vue';
 
-// 0. Deteksi Halaman Detail vs Beranda (Full Page View)
+// 0. Deteksi Halaman Detail vs Beranda
 const activeCarSlug = ref('');
 
 const checkCurrentUrl = () => {
@@ -13,7 +13,6 @@ const checkCurrentUrl = () => {
     if (carParam) {
       activeCarSlug.value = carParam.toLowerCase();
     } else {
-      // Cek juga format pathname /mobil/{slug} jika ada
       const match = window.location.pathname.match(/\/mobil\/([a-zA-Z0-9-]+)/);
       if (match && match[1]) {
         activeCarSlug.value = match[1].toLowerCase();
@@ -45,7 +44,7 @@ onUnmounted(() => {
   window.removeEventListener('popstate', checkCurrentUrl);
 });
 
-// 1. Data Slider Hero
+// 1. Data Slider Hero (3 Slide Lengkap)
 const heroSlides = [
   {
     id: 1,
@@ -94,7 +93,7 @@ const prevSlide = () => {
   currentSlide.value = (currentSlide.value - 1 + heroSlides.length) % heroSlides.length;
 };
 
-// 2. Data Mobil Showroom
+// 2. Data Mobil Showroom (8 Unit Lengkap)
 const cars = [
   {
     id: 1,
@@ -261,7 +260,7 @@ const calcWhatsAppUrl = computed(() => {
   return `https://wa.me/6285299837635?text=${encodeURIComponent(text)}`;
 });
 
-// 4. Testimoni
+// 4. Data Galeri Testimoni Serah Terima (15 Foto Lengkap)
 const testimonials = [
   {
     id: 1,
@@ -289,15 +288,130 @@ const testimonials = [
     title: "Serah Terima Suzuki Fronx",
     quote: "Unit terbaru langsung siap pakai untuk keluarga. Penjelasan fitur dan kelengkapan berkas sangat detail.",
     date: "05 September 2026"
+  },
+  {
+    id: 4,
+    image: "/images/Testimoni/WhatsApp Image 2026-09-10 at 16.29.34.jpeg",
+    tag: "Booking Test Drive",
+    badge: "Verified Buyer • Makassar",
+    title: "Test Drive Suzuki XL7 Alpha Hybrid",
+    quote: "Test drive diantar langsung ke rumah, impresi berkendara mantap dan penjelasan fitur sangat ramah.",
+    date: "03 September 2026"
+  },
+  {
+    id: 6,
+    image: "/images/Testimoni/WhatsApp Image 2026-09-10 at 16.29.35 (2).jpeg",
+    tag: "Unit Serah Terima",
+    badge: "Verified Buyer • Makassar",
+    title: "Serah Terima Suzuki S-Presso",
+    quote: "Mobil lincah impian akhirnya tiba. Pelayanan sangat memuaskan dari awal hingga STNK diantar ke rumah.",
+    date: "28 Agustus 2026"
+  },
+  {
+    id: 7,
+    image: "/images/Testimoni/WhatsApp Image 2026-09-10 at 16.29.35 (4).jpeg",
+    tag: "Unit Serah Terima",
+    badge: "Verified Buyer • Makassar",
+    title: "Serah Terima Suzuki Fronx",
+    quote: "Didukung bengkel 3S resmi Latimojong dengan pelayanan terpercaya dan mekanik profesional.",
+    date: "25 Agustus 2026"
+  },
+  {
+    id: 8,
+    image: "/images/Testimoni/WhatsApp Image 2026-09-10 at 16.29.35 (6).jpeg",
+    tag: "Unit Serah Terima",
+    badge: "Verified Buyer • Makassar",
+    title: "Serah Terima Suzuki Jimny 4x4",
+    quote: "Unit legendaris 4x4 idaman akhirnya sampai di garasi. Bonus aksesoris lengkap dan proses tanpa ribet.",
+    date: "20 Agustus 2026"
+  },
+  {
+    id: 9,
+    image: "/images/Testimoni/WhatsApp Image 2026-09-10 at 16.29.35 (8).jpeg",
+    tag: "Booking Test Drive",
+    badge: "Verified Buyer • Makassar",
+    title: "Test Drive Suzuki Fronx",
+    quote: "Uji performa kenyamanan berkendara di jalanan kota Makassar sebelum memutuskan ambil unit baru.",
+    date: "17 Agustus 2026"
+  },
+  {
+    id: 10,
+    image: "/images/Testimoni/WhatsApp Image 2026-09-10 at 16.29.35 (9).jpeg",
+    tag: "Booking Test Drive",
+    badge: "Verified Buyer • Makassar",
+    title: "Test Drive Suzuki Fronx Crossover",
+    quote: "Konsultasi produk sangat jelas dan ramah saat sesi test drive unit di showroom resmi Makassar.",
+    date: "15 Agustus 2026"
+  },
+  {
+    id: 11,
+    image: "/images/Testimoni/WhatsApp Image 2026-09-10 at 16.29.35 (10).jpeg",
+    tag: "Unit Serah Terima",
+    badge: "Verified Buyer • Makassar",
+    title: "Serah Terima Suzuki Fronx",
+    quote: "Desain gagah dan elegan, sangat pas dipakai harian. Sukses selalu untuk Suzuki Megahputra.",
+    date: "14 Agustus 2026"
+  },
+  {
+    id: 12,
+    image: "/images/Testimoni/WhatsApp Image 2026-09-10 at 16.29.35 (11).jpeg",
+    tag: "Serah Terima Showroom",
+    badge: "Verified Buyer • Makassar",
+    title: "Pengantaran Unit Suzuki Fronx Kembar",
+    quote: "Pengiriman dua unit armada mobil Suzuki bersamaan berjalan aman, cepat, dan profesional.",
+    date: "10 Agustus 2026"
+  },
+  {
+    id: 13,
+    image: "/images/Testimoni/WhatsApp Image 2026-09-10 at 16.29.35 (12).jpeg",
+    tag: "Serah Terima Showroom",
+    badge: "Verified Buyer • Makassar",
+    title: "Serah Terima Suzuki Fronx",
+    quote: "Kesiapan unit cepat dan kelengkapan dokumen serah terima diproses rapi oleh Mas CHAE SUZUKI.",
+    date: "08 Agustus 2026"
+  },
+  {
+    id: 14,
+    image: "/images/Testimoni/WhatsApp Image 2026-09-10 at 16.29.35 (16).jpeg",
+    tag: "Unit Niaga Usaha",
+    badge: "Verified Buyer • Makassar",
+    title: "Serah Terima New Carry Pick Up Box",
+    quote: "Mobil usaha angkut barang dengan bak tertutup langsung siap operasi untuk kelancaran bisnis logistik.",
+    date: "07 Agustus 2026"
+  },
+  {
+    id: 15,
+    image: "/images/Testimoni/WhatsApp Image 2026-09-10 at 16.29.35 (17).jpeg",
+    tag: "Unit Serah Terima",
+    badge: "Verified Buyer • Makassar",
+    title: "Serah Terima Suzuki Fronx",
+    quote: "Mobil baru diantar langsung setelah pengecekan spooring & balancing standar resmi pabrikan.",
+    date: "06 Agustus 2026"
+  },
+  {
+    id: 16,
+    image: "/images/Testimoni/WhatsApp Image 2026-09-10 at 16.29.35 (18).jpeg",
+    tag: "Unit Serah Terima",
+    badge: "Verified Buyer • Makassar",
+    title: "Serah Terima Suzuki XL7 ke Rumah Konsumen",
+    quote: "Layanan purna jual terbaik, berkas dibantu sampai selesai dan mobil diantar langsung ke depan rumah.",
+    date: "04 Agustus 2026"
   }
 ];
+
 const showAllGallery = ref(false);
-const displayedTestimonials = computed(() => testimonials);
+const displayedTestimonials = computed(() => {
+  return showAllGallery.value ? testimonials : testimonials.slice(0, 3);
+});
+
+const toggleGallery = () => {
+  showAllGallery.value = !showAllGallery.value;
+};
 </script>
 
 <template>
   <div class="min-h-screen bg-[#f9f9ff] text-[#111c2d] antialiased overflow-x-hidden w-full max-w-full">
-    <!-- JIKA ADA PARAMETER MOBIL: TAMPILKAN CAR DETAIL SECARA PENUH (MIRIP PDF) -->
+    <!-- JIKA ADA PARAMETER MOBIL: TAMPILKAN CAR DETAIL SECARA PENUH -->
     <template v-if="activeCarSlug">
       <CarDetail :carSlug="activeCarSlug" @back="backToHome" />
     </template>
@@ -457,7 +571,7 @@ const displayedTestimonials = computed(() => testimonials);
               </div>
             </div>
 
-            <!-- Car Grid: Tombol Detail Membuka Halaman Penuh Secara Instan -->
+            <!-- Car Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               <div v-for="car in filteredCars" :key="car.id" class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-slate-200 flex flex-col justify-between">
                 <div>
@@ -639,7 +753,57 @@ const displayedTestimonials = computed(() => testimonials);
           </div>
         </section>
 
-        <!-- 6. SALES CTA BANNER -->
+        <!-- 6. DELIVERY GALLERY (LENGKAP DENGAN TOGGLE BUKA/TUTUP) -->
+        <section class="w-full py-12 sm:py-16 bg-slate-50 border-t border-slate-200" id="galery-section">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-emerald-600">Kepercayaan Pelanggan</span>
+                <h2 class="text-2xl lg:text-3xl font-extrabold text-slate-900 mt-1">Bukti Kepuasan Pelanggan Suzuki Megah Makassar</h2>
+                <p class="text-xs sm:text-sm text-slate-500">Momen penyerahan unit mobil impian bersama Sales Executive CHAE SUZUKI kepada konsumen setia kami.</p>
+              </div>
+              <button type="button" @click="toggleGallery" class="text-xs sm:text-sm font-bold text-red-600 hover:text-red-700 flex items-center gap-1 cursor-pointer transition-colors self-start md:self-auto">
+                <span>{{ showAllGallery ? 'Tampilkan Lebih Sedikit' : 'Lihat Seluruh Galery Serah Terima' }}</span>
+                <span class="material-symbols-outlined text-[18px] transition-transform duration-300" :class="{ 'rotate-180': showAllGallery }">
+                  {{ showAllGallery ? 'expand_less' : 'arrow_forward' }}
+                </span>
+              </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-500">
+              <div v-for="item in displayedTestimonials" :key="item.id"
+                   class="bg-white rounded-xl overflow-hidden border border-slate-200 shadow-sm flex flex-col justify-between hover:shadow-lg transition-all duration-300">
+                <div>
+                  <div class="relative aspect-[4/3] bg-slate-100 overflow-hidden">
+                    <img :src="item.image" :alt="item.title" class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300" />
+                    <span class="absolute top-3 left-3 bg-[#06182A]/90 text-white text-[10px] font-bold px-2.5 py-1 rounded shadow-sm">
+                      {{ item.tag }}
+                    </span>
+                  </div>
+                  <div class="p-5 space-y-2">
+                    <div class="flex items-center gap-1 text-emerald-600 text-xs font-bold">
+                      <span class="material-symbols-outlined text-[16px]">verified</span> {{ item.badge }}
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-base leading-snug">{{ item.title }}</h3>
+                    <p class="text-xs text-slate-500 leading-relaxed italic">"{{ item.quote }}"</p>
+                  </div>
+                </div>
+                <div class="p-5 pt-0 text-[11px] font-semibold text-slate-400">
+                  Tanggal Serah Terima: {{ item.date }}
+                </div>
+              </div>
+            </div>
+
+            <div v-if="!showAllGallery" class="text-center pt-2">
+              <button type="button" @click="toggleGallery" class="px-5 sm:px-6 py-2.5 bg-white hover:bg-slate-100 text-slate-800 text-xs font-bold rounded-xl border border-slate-300 shadow-sm transition-all inline-flex items-center gap-2 cursor-pointer">
+                <span>Buka Seluruh Galery Serah Terima ({{ testimonials.length }} Foto)</span>
+                <span class="material-symbols-outlined text-[16px]">expand_more</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. SALES CTA BANNER -->
         <section class="w-full py-12 sm:py-16">
           <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="relative rounded-2xl overflow-hidden bg-[#06182A] text-white p-6 sm:p-8 lg:p-12 shadow-2xl">
@@ -685,6 +849,10 @@ const displayedTestimonials = computed(() => testimonials);
       <aside class="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-40 w-[92%] sm:w-[90%] max-w-md">
         <div class="bg-white/90 backdrop-blur-xl border border-slate-200 shadow-2xl rounded-full p-1.5 flex items-center justify-between gap-2">
           <a href="https://wa.me/6285299837635" target="_blank" class="flex-[1.5] h-11 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition-all">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-80"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+            </span>
             <span class="material-symbols-outlined text-[18px]">forum</span>
             <span>Chat WhatsApp</span>
           </a>
