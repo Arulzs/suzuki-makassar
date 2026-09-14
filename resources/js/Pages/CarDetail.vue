@@ -9,7 +9,14 @@ const props = defineProps({
   }
 });
 
-// Database Detail Seluruh Mobil Lengkap dengan Pilihan Warna Spesifik Masing-Masing
+defineEmits(['back']);
+
+// Helper encoding path gambar agar aman dari spasi dan tanda '+'
+const getCarColorPath = (folder, fileName) => {
+  return `/images/Gambar%20mobil%20%2B%20warna/${folder}/${fileName}`;
+};
+
+// Database Lengkap Seluruh Mobil dengan Gambar Warna Persis Isi Folder
 const carsDatabase = {
   'ertiga': {
     name: "Suzuki All New Ertiga",
@@ -24,13 +31,13 @@ const carsDatabase = {
     transmission: "AT / 5-MT",
     batteryWarranty: "Garansi Baterai 8 Tahun",
     colors: [
-      { name: "Ertiga Cool Black", hex: "#161616" },
-      { name: "Ertiga Pearl Snow White", hex: "#FFFFFF" },
-      { name: "Ertiga Metallic Magma Grey", hex: "#525458" },
-      { name: "Ertiga Metallic Silky Silver", hex: "#D2D4D7" },
-      { name: "Ertiga Pearl Burgundy Red", hex: "#5E1825" },
-      { name: "Ertiga Brave Khaki", hex: "#635D50" },
-      { name: "Ertiga Pearl Radiant Red", hex: "#8F1522" }
+      { name: "Ertiga Cool Black", hex: "#161616", image: getCarColorPath("ERTIGA", "ERTIGA COOL BLACK.jpeg") },
+      { name: "Ertiga Pearl Snow White", hex: "#FFFFFF", image: getCarColorPath("ERTIGA", "ERTIGA PEARL SNOW WHITE.jpeg") },
+      { name: "Ertiga Metallic Magma Grey", hex: "#525458", image: getCarColorPath("ERTIGA", "ERTIGA METALLIC MAGMA GREY.jpeg") },
+      { name: "Ertiga Metallic Silky Silver", hex: "#D2D4D7", image: getCarColorPath("ERTIGA", "ERTIGA METALLIC SILKY SILVER.jpeg") },
+      { name: "Ertiga Pearl Burgundy Red", hex: "#5E1825", image: getCarColorPath("ERTIGA", "ERTIGA PEARL BURGUNDY RED.jpeg") },
+      { name: "Ertiga Brave Khaki", hex: "#635D50", image: getCarColorPath("ERTIGA", "ERTIGA BRAVE KHAKI.jpeg") },
+      { name: "Ertiga Pearl Radiant Red", hex: "#8F1522", image: getCarColorPath("ERTIGA", "ERTIGA PEARL RADIANT RED.jpeg") }
     ],
     variants: [
       { id: "ga", name: "Ertiga GA", transmission: "MANUAL (5-MT)", statusTag: "Ready Stock", price: 269700000, formattedPrice: "Rp 269.700.000", dpStart: "DP Mulai Rp 20 Jt-an", isFlagship: false, specs: ["Mesin 1.5L K15B Bertenaga", "AC Double Blower Digital", "Dual SRS Airbag & ABS", "Tilt Steering & Power Window"] },
@@ -51,10 +58,10 @@ const carsDatabase = {
     transmission: "AT / 5-MT",
     batteryWarranty: "Garansi Baterai 8 Tahun",
     colors: [
-      { name: "XL7 Pearl Snow White - Black", hex: "#EAEAEA" },
-      { name: "XL7 Marble Black", hex: "#1C1D21" },
-      { name: "XL7 Savanna Ivory - Black", hex: "#C7BAA7" },
-      { name: "XL7 Ice Grayish Blue - Black", hex: "#6D8292" }
+      { name: "XL7 Pearl Snow White - Black", hex: "#FFFFFF", secondaryHex: "#1C1D21", isDualTone: true, image: getCarColorPath("XL7", "XL7 PEARL SNOW WHITE - BLACK.png") },
+      { name: "XL7 Marble Black", hex: "#1C1D21", image: getCarColorPath("XL7", "XL7 MARBLE BLACK.png") },
+      { name: "XL7 Savanna Ivory - Black", hex: "#C7BAA7", secondaryHex: "#1C1D21", isDualTone: true, image: getCarColorPath("XL7", "XL7 SAVANNA IVORY - BLACK.png") },
+      { name: "XL7 Ice Grayish Blue - Black", hex: "#6D8292", secondaryHex: "#1C1D21", isDualTone: true, image: getCarColorPath("XL7", "XL7 ICE GRAYISH BLUE - BLACK.png") }
     ],
     variants: [
       { id: "zeta-mt", name: "XL7 Zeta MT", transmission: "MANUAL (5-MT)", statusTag: "Ready Stock", price: 305300000, formattedPrice: "Rp 305.300.000", dpStart: "DP Mulai Rp 25 Jt-an", isFlagship: false, specs: ["Ground Clearance 200mm", "LED Headlamp with DRL", "Roof Rail Fungsional", "Velg Alloy 16 Inch"] },
@@ -77,13 +84,13 @@ const carsDatabase = {
     transmission: "AT / MT",
     batteryWarranty: "Garansi Baterai 8 Tahun",
     colors: [
-      { name: "Fronx Metallic Magma Gray", hex: "#4C4E52" },
-      { name: "Fronx Savanna Ivory", hex: "#D6CABA" },
-      { name: "Fronx Pearl Snow White", hex: "#FFFFFF" },
-      { name: "Fronx Savanna Ivory - Black", hex: "#BAAC99" },
-      { name: "Fronx Pearl Snow White - Black", hex: "#EBEBEB" },
-      { name: "Fronx Ice Grayish Blue - Black", hex: "#5C7384" },
-      { name: "Fronx Cool Black with Black Grille", hex: "#111111" }
+      { name: "Fronx Metallic Magma Gray", hex: "#4C4E52", image: getCarColorPath("FRONX", "FRONX METALIC MAGMA GRAY.png") },
+      { name: "Fronx Savanna Ivory", hex: "#D6CABA", image: getCarColorPath("FRONX", "FRONX SAVANNA IVORY.png") },
+      { name: "Fronx Pearl Snow White", hex: "#FFFFFF", image: getCarColorPath("FRONX", "FRONX PEARL SNOW WHITE.png") },
+      { name: "Fronx Savanna Ivory - Black", hex: "#BAAC99", secondaryHex: "#111111", isDualTone: true, image: getCarColorPath("FRONX", "FRONX SAVANNA IVORY - BLACK.png") },
+      { name: "Fronx Pearl Snow White - Black", hex: "#EBEBEB", secondaryHex: "#111111", isDualTone: true, image: getCarColorPath("FRONX", "FRONX PEARL SNOW WHITE - BLACK.png") },
+      { name: "Fronx Ice Grayish Blue - Black", hex: "#5C7384", secondaryHex: "#111111", isDualTone: true, image: getCarColorPath("FRONX", "FRONX ICE GRAYISH BLUE - BLACK.png") },
+      { name: "Fronx Cool Black with Black Grille", hex: "#111111", image: getCarColorPath("FRONX", "FRONX COOL BLACK WITH BLACK GRILLE.png") }
     ],
     variants: [
       { id: "gl-mt", name: "Fronx GL MT", transmission: "MANUAL (5-MT)", statusTag: "Ready Unit", price: 279500000, formattedPrice: "Rp 279.500.000", dpStart: "DP Mulai Rp 30 Jt-an", isFlagship: false, specs: ["Desain Coupé Sporty", "Headlamp LED Projector", "Wireless Phone Connectivity", "Electronic Stability Program"] },
@@ -106,19 +113,19 @@ const carsDatabase = {
     transmission: "AUTOMATIC (4-AT)",
     batteryWarranty: "Garansi Mesin Resmi",
     colors: [
-      { name: "Jimny 5 Bluish Black 4", hex: "#171B20" },
-      { name: "Jimny 5 Jungle Green 2", hex: "#2E3B32" },
-      { name: "Jimny 5 Metallic Chiffon Ivory 2 + Pearl Bluish Black 4", hex: "#D2C59D" },
-      { name: "Jimny 5 Metallic Sizzling Red + Pearl Bluish Black 4", hex: "#9E1E24" },
-      { name: "Jimny 5 Kinetic Yellow 2 + Pearl Bluish Black 4", hex: "#D6DF23" },
-      { name: "Jimny 5 Granite Gray Metallic", hex: "#4B4E51" },
-      { name: "Jimny 3 Bluish Black Pearl 3", hex: "#1A1D24" },
-      { name: "Jimny 3 Medium Grey", hex: "#5C6063" },
-      { name: "Jimny 3 Silky Silver Metallic", hex: "#CBCDD0" },
-      { name: "Jimny 3 Metallic Chiffon Ivory 2 + Pearl Bluish Black 4", hex: "#CCC09B" },
-      { name: "Jimny 3 Pearl White", hex: "#F4F5F7" },
-      { name: "Jimny 4 Metallic Brisk Blue + Pearl Bluish Black 3", hex: "#0066B3" },
-      { name: "Jimny 3 Kinetic Yellow 2 + Pearl Bluish Black 4", hex: "#DCE528" }
+      { name: "Jimny 5 Jungle Green 2", hex: "#2E3B32", image: getCarColorPath("JIMNY", "JIMNY 5 JUNGLE GREEN 2.jpg") },
+      { name: "Jimny 5 Kinetic Yellow 2 + Pearl Bluish Black 4", hex: "#D6DF23", secondaryHex: "#171B20", isDualTone: true, image: getCarColorPath("JIMNY", "JIMNY 5 KINETIC YELLOW 2 + PEARL BLUISH BLACK 4.jpg") },
+      { name: "Jimny 5 Metallic Chiffon Ivory 2 + Pearl Bluish Black 4", hex: "#D2C59D", secondaryHex: "#171B20", isDualTone: true, image: getCarColorPath("JIMNY", "JIMNY 5 METALLIC CHIFFON IVORY 2 + PEARL BLUISH BLACK 4.jpg") },
+      { name: "Jimny 5 Metallic Sizzling Red + Pearl Bluish Black 4", hex: "#9E1E24", secondaryHex: "#171B20", isDualTone: true, image: getCarColorPath("JIMNY", "JIMNY 5 METALLIC SIZZLING RED + PEARL BLUISH BLACK 4.jpg") },
+      { name: "Jimny 5 Bluish Black 4", hex: "#171B20", image: getCarColorPath("JIMNY", "JIMNY 5 BLUISH BLACK 4.jpg") },
+      { name: "Jimny 5 Granite Gray Metallic", hex: "#4B4E51", image: getCarColorPath("JIMNY", "JIMNY 5 GRANITE GRAY METALLIC.jpg") },
+      { name: "Jimny 3 Bluish Black Pearl 3", hex: "#1A1D24", image: getCarColorPath("JIMNY", "JIMNY 3 BLUISH BLACK PEARL 3.jpg") },
+      { name: "Jimny 3 Kinetic Yellow 2 + Pearl Bluish Black 4", hex: "#DCE528", secondaryHex: "#1A1D24", isDualTone: true, image: getCarColorPath("JIMNY", "JIMNY 3 KINETIC YELLOW 2 + PEARL BLUISH BLACK 4.jpg") },
+      { name: "Jimny 3 Medium Grey", hex: "#5C6063", image: getCarColorPath("JIMNY", "JIMNY 3 MEDIUM GREY.jpg") },
+      { name: "Jimny 3 Metallic Chiffon Ivory 2 + Pearl Bluish Black 4", hex: "#CCC09B", secondaryHex: "#1A1D24", isDualTone: true, image: getCarColorPath("JIMNY", "JIMNY 3 METALLIC CHIFFON IVORY 2 + PEARL BLUISH BLACK 4.jpg") },
+      { name: "Jimny 3 Pearl White", hex: "#F4F5F7", image: getCarColorPath("JIMNY", "JIMNY 3 PEARL WHITE.jpg") },
+      { name: "Jimny 3 Silky Silver Metallic", hex: "#CBCDD0", image: getCarColorPath("JIMNY", "JIMNY 3 SILKY SILVER METALLIC.jpg") },
+      { name: "Jimny 4 Metallic Brisk Blue + Pearl Bluish Black 3", hex: "#0066B3", secondaryHex: "#1A1D24", isDualTone: true, image: getCarColorPath("JIMNY", "JIMNY 4 METALLIC BRISK BLUE + PEARL BLUISH BLACK 3.jpg") }
     ],
     variants: [
       { id: "3d-at", name: "Jimny 3-Door AT", transmission: "AUTOMATIC 4WD", statusTag: "Ikonik 4x4", price: 522100000, formattedPrice: "Rp 522.100.000", dpStart: "DP Mulai Rp 100 Jt-an", isFlagship: false, specs: ["AllGrip Pro 4WD (2H, 4H, 4L)", "Ladder Frame Chassis Kokoh", "Brake LSD Traction Control", "Hill Descent & Hold Control"] },
@@ -140,10 +147,10 @@ const carsDatabase = {
     transmission: "6-AT with Paddle Shift",
     batteryWarranty: "Garansi Baterai 8 Tahun",
     colors: [
-      { name: "Grand Vitara Prime Splendid Silver + Black", hex: "#BFC3C7" },
-      { name: "Grand Vitara Pearl Arctic White + Black", hex: "#EEEEEE" },
-      { name: "Grand Vitara Pearl Midnight Black", hex: "#14171A" },
-      { name: "Grand Vitara Pearl Cave Black", hex: "#0B0C0E" }
+      { name: "Grand Vitara Prime Splendid Silver + Black", hex: "#BFC3C7", secondaryHex: "#14171A", isDualTone: true, image: getCarColorPath("GRAND VITARA", "GRAND VITARA PRIME SPLENDID SILVER + BLACK.png") },
+      { name: "Grand Vitara Pearl Arctic White + Black", hex: "#EEEEEE", secondaryHex: "#14171A", isDualTone: true, image: getCarColorPath("GRAND VITARA", "GRAND VITARA PEARL ARCTIC WHITE + BLACK.png") },
+      { name: "Grand Vitara Pearl Midnight Black", hex: "#14171A", image: getCarColorPath("GRAND VITARA", "GRAND VITARA PEARL MIDNIGHT BLACK.png") },
+      { name: "Grand Vitara Pearl Cave Black", hex: "#0B0C0E", image: getCarColorPath("GRAND VITARA", "GRAND VITARA PEARL CAVE BLACK.png") }
     ],
     variants: [
       { id: "gx-st", name: "Grand Vitara New MC GX Single Tone", transmission: "6-SPEED AT", statusTag: "Ready Unit", price: 434000000, formattedPrice: "Rp 434.000.000", dpStart: "DP Mulai Rp 30 Jt-an", isFlagship: false, specs: ["Panoramic Sunroof Luas", "360 Surround View Camera", "Head-Up Display (HUD)", "Wireless Charger Smartphone"] },
@@ -163,11 +170,11 @@ const carsDatabase = {
     transmission: "AGS / 5-MT",
     batteryWarranty: "Garansi Mesin Resmi",
     colors: [
-      { name: "S-Presso Granite Gray Metallic", hex: "#484A4D" },
-      { name: "S-Presso White", hex: "#FFFFFF" },
-      { name: "S-Presso Silky Silver Metallic", hex: "#CECFD2" },
-      { name: "S-Presso Solid Fire Red", hex: "#BE1E2D" },
-      { name: "S-Presso Sizzle Orange", hex: "#E85D22" }
+      { name: "S-Presso Granite Gray Metallic", hex: "#484A4D", image: getCarColorPath("S-PRESSO", "S-PRESSO GRANITE GRAY METALLIC.jpg") },
+      { name: "S-Presso White", hex: "#FFFFFF", image: getCarColorPath("S-PRESSO", "S-PRESSO WHITE.jpg") },
+      { name: "S-Presso Silky Silver Metallic", hex: "#CECFD2", image: getCarColorPath("S-PRESSO", "S-PRESSO SILKY SILVER METALLIC.jpg") },
+      { name: "S-Presso Solid Fire Red", hex: "#BE1E2D", image: getCarColorPath("S-PRESSO", "S-PRESSO SOLID FIRE RED.jpg") },
+      { name: "S-Presso Sizzle Orange", hex: "#E85D22", image: getCarColorPath("S-PRESSO", "S-PRESSO SIZZLE ORANGE.jpg") }
     ],
     variants: [
       { id: "mt", name: "S-Presso MT", transmission: "MANUAL (5-MT)", statusTag: "Super Irit", price: 193500000, formattedPrice: "Rp 193.500.000", dpStart: "DP Mulai Rp 20 Jt-an", isFlagship: false, specs: ["Mesin Dual Jet K10C Baru", "Dual SRS Airbag & Rem ABS", "Ground Clearance 180mm", "Headunit Touchscreen 7-inch"] },
@@ -187,11 +194,11 @@ const carsDatabase = {
     transmission: "MANUAL (5-MT)",
     batteryWarranty: "Garansi Mesin Resmi",
     colors: [
-      { name: "APV White", hex: "#FFFFFF" },
-      { name: "APV Burgundy Red", hex: "#5C1523" },
-      { name: "APV Graphite Grey Metallic", hex: "#46484B" },
-      { name: "APV Silky Silver Metallic", hex: "#CACBCE" },
-      { name: "APV Black", hex: "#111111" }
+      { name: "APV White", hex: "#FFFFFF", image: getCarColorPath("APV", "APV WHITE.jpeg") },
+      { name: "APV Burgundy Red", hex: "#5C1523", image: getCarColorPath("APV", "APV BURGUNDY RED.jpeg") },
+      { name: "APV Graphite Grey Metallic", hex: "#46484B", image: getCarColorPath("APV", "APV GRAPHITE GREY METALLIC.jpeg") },
+      { name: "APV Silky Silver Metallic", hex: "#CACBCE", image: getCarColorPath("APV", "APV SILKY SILVER METALLIC.jpeg") },
+      { name: "APV Black", hex: "#111111", image: getCarColorPath("APV", "APV BLACK.jpeg") }
     ],
     variants: [
       { id: "blind-van", name: "APV Blind Van", transmission: "MANUAL (5-MT)", statusTag: "Kargo Usaha", price: 197100000, formattedPrice: "Rp 197.100.000", dpStart: "DP Mulai Rp 50 Jt-an", isFlagship: false, specs: ["Kapasitas Kargo Luas & Tertutup", "Daya Angkut Ekstra Tangguh", "Mesin G15A Bandel & Mudah Dirawat", "AC Single Blower Dingin"] },
@@ -214,9 +221,9 @@ const carsDatabase = {
     transmission: "MANUAL (5-MT)",
     batteryWarranty: "Garansi Mesin Resmi",
     colors: [
-      { name: "Carry Real Black", hex: "#161616" },
-      { name: "Carry Silky Silver", hex: "#D0D2D5" },
-      { name: "Carry White", hex: "#FFFFFF" }
+      { name: "Carry Real Black", hex: "#161616", image: getCarColorPath("CARRY", "CARRY REAL BLACK.jpeg") },
+      { name: "Carry Silky Silver", hex: "#D0D2D5", image: getCarColorPath("CARRY", "CARRY SILKY SILVER.jpeg") },
+      { name: "Carry White", hex: "#FFFFFF", image: getCarColorPath("CARRY", "CARRY WHITE.jpeg") }
     ],
     variants: [
       { id: "fd", name: "Carry Flat Deck (FD)", transmission: "MANUAL (5-MT)", statusTag: "Ready Stock", price: 198200000, formattedPrice: "Rp 198.200.000", dpStart: "DP Mulai Rp 10 Jt-an", isFlagship: false, specs: ["Bak Standar Buka Belakang", "Daya Angkut Kuat 1 Ton", "Sasis Tebal Double Reinforcement", "Immobilizer Kunci Aman"] },
@@ -227,7 +234,7 @@ const carsDatabase = {
   }
 };
 
-// Deteksi Mobil Aktif Berdasarkan Props atau URL Search Parameter
+// Deteksi Mobil Aktif Berdasarkan Props atau URL Query Parameter
 const activeSlug = computed(() => {
   if (props.carSlug) return props.carSlug.toLowerCase();
   if (typeof window !== 'undefined') {
@@ -242,17 +249,47 @@ const currentCar = computed(() => {
   return carsDatabase[activeSlug.value] || carsDatabase['ertiga'];
 });
 
-const variants = computed(() => currentCar.value.variants);
+const variants = computed(() => currentCar.value.variants || []);
 const availableColors = computed(() => currentCar.value.colors || []);
-const activeColor = ref(availableColors.value[0] || { name: "", hex: "#FFFFFF" });
 
-// Kalkulator Kredit Interaktif
-const formatIDR = (num) => 'Rp ' + Math.round(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-
-const selectedPrice = ref(variants.value[0]?.price || 269700000);
+// State Reaktif (Diinisialisasi di sini sebelum watcher dijalankan)
+const activeColor = ref(null);
+const selectedPrice = ref(269700000);
 const dpPercent = ref(20);
 const selectedTenor = ref(5);
 const selectedLeasing = ref("Mandiri Tunas Finance");
+
+// Sinkronisasi Data Saat Mobil Berganti
+watch(currentCar, (newCar) => {
+  if (newCar) {
+    if (newCar.colors && newCar.colors.length > 0) {
+      activeColor.value = newCar.colors[0];
+    } else {
+      activeColor.value = null;
+    }
+    if (newCar.variants && newCar.variants.length > 0) {
+      selectedPrice.value = newCar.variants[0].price;
+    }
+  }
+}, { immediate: true });
+
+// Gambar Mobil Utama yang Aktif Berdasarkan Warna yang Dipilih
+const displayImage = computed(() => {
+  if (activeColor.value && activeColor.value.image) {
+    return activeColor.value.image;
+  }
+  return currentCar.value?.image || '/images/ERTIGA.jpeg';
+});
+
+// Fallback jika browser gagal memuat file warna
+const onImageError = (e) => {
+  if (currentCar.value && e.target.src !== currentCar.value.image) {
+    e.target.src = currentCar.value.image;
+  }
+};
+
+// Kalkulator Kredit
+const formatIDR = (num) => 'Rp ' + Math.round(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 
 const leasingPartners = [
   "Mandiri Tunas Finance",
@@ -267,18 +304,6 @@ const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
   document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
 };
-
-// Update harga kalkulator dan warna default saat berganti mobil
-watch(currentCar, (newCar) => {
-  if (newCar) {
-    if (newCar.variants && newCar.variants.length > 0) {
-      selectedPrice.value = newCar.variants[0].price;
-    }
-    if (newCar.colors && newCar.colors.length > 0) {
-      activeColor.value = newCar.colors[0];
-    }
-  }
-}, { immediate: true });
 
 const currentVariantName = computed(() => {
   const match = variants.value.find(v => v.price === Number(selectedPrice.value));
@@ -306,9 +331,9 @@ const sendCalculationWa = () => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-[#f9f9ff] text-[#111c2d] antialiased">
+  <div class="min-h-screen bg-[#f9f9ff] text-[#111c2d] antialiased pt-16 sm:pt-20">
     <!-- TOP NOTIFICATION STRIP -->
-    <div class="bg-[#06182A] text-white hidden lg:block border-b border-slate-800">
+    <div class="bg-[#06182A] text-white hidden lg:block border-b border-slate-800 fixed top-0 left-0 right-0 z-50">
       <div class="max-w-7xl mx-auto px-6 h-10 flex items-center justify-between text-xs font-medium">
         <div class="flex items-center gap-6">
           <a href="https://wa.me/6285299837635" target="_blank" class="flex items-center gap-1.5 text-slate-300 hover:text-white transition-colors">
@@ -332,7 +357,7 @@ const sendCalculationWa = () => {
       </div>
     </div>
 
-    <!-- NAVBAR AKTIF (Sticky & Mengikuti Scroll) -->
+    <!-- NAVBAR AKTIF -->
     <Navbar currentPage="passenger" />
 
     <main class="w-full">
@@ -366,9 +391,9 @@ const sendCalculationWa = () => {
             <div class="lg:col-span-7 space-y-4">
               <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-3 sm:p-5 space-y-4">
                 
-                <!-- CONTAINER GAMBAR & BADGE RESPONSIF MOBILE -->
+                <!-- CONTAINER GAMBAR -->
                 <div class="relative w-full aspect-[16/10] bg-gradient-to-b from-slate-50 to-slate-100 rounded-xl overflow-hidden flex items-center justify-center">
-                  <!-- BADGE KIRI ATAS RESPONSIF -->
+                  <!-- BADGE KIRI ATAS -->
                   <div class="absolute top-2.5 left-2.5 sm:top-4 sm:left-4 z-10 flex flex-col items-start gap-1 sm:gap-1.5 max-w-[75%] sm:max-w-none">
                     <span class="text-[8px] sm:text-[10px] font-extrabold uppercase tracking-tight sm:tracking-wider bg-red-600 text-white px-1.5 py-0.5 sm:px-2.5 sm:py-1 rounded shadow-sm leading-tight">
                       {{ currentCar.segment }}
@@ -378,29 +403,43 @@ const sendCalculationWa = () => {
                     </span>
                   </div>
 
-                  <img :src="currentCar.image" :alt="currentCar.name" class="w-full h-full object-contain p-2 hover:scale-105 transition-transform duration-500" />
+                  <!-- GAMBAR MOBIL UTAMA -->
+                  <img :src="displayImage"
+                       :alt="activeColor?.name || currentCar.name"
+                       @error="onImageError"
+                       class="w-full h-full object-contain p-2 transition-transform duration-500 hover:scale-105" />
                   
-                  <!-- BADGE KANAN BAWAH RESPONSIF -->
+                  <!-- BADGE KANAN BAWAH -->
                   <div class="absolute bottom-2.5 right-2.5 sm:bottom-3 sm:right-4 flex items-center gap-1 text-slate-500 text-[9px] sm:text-[11px] font-medium bg-white/90 backdrop-blur-sm px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full border border-slate-200 shadow-sm">
                     <span class="material-symbols-outlined text-[13px] sm:text-[14px]">photo_camera</span>
                     <span>Showroom Resmi Latimojong</span>
                   </div>
                 </div>
 
-                <!-- PILIHAN WARNA EKSTERIOR SESUAI MOBIL -->
+                <!-- PILIHAN WARNA EKSTERIOR (DUAL-TONE SUPPORT) -->
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-50 p-3 sm:p-3.5 rounded-xl border border-slate-200">
                   <div>
                     <span class="text-[10px] font-bold uppercase text-slate-400 tracking-wider block">Pilihan Warna Eksterior</span>
-                    <span class="text-xs sm:text-sm font-bold text-slate-900">{{ activeColor.name }}</span>
+                    <span class="text-xs sm:text-sm font-bold text-slate-900">{{ activeColor?.name }}</span>
                   </div>
-                  <div class="flex flex-wrap items-center gap-2">
+                  <div class="flex flex-wrap items-center gap-2.5">
                     <button v-for="(color, idx) in availableColors" :key="idx" @click="activeColor = color"
                             :title="color.name"
-                            :style="{ backgroundColor: color.hex }"
-                            :class="['w-7 h-7 sm:w-8 sm:h-8 rounded-full border transition-all cursor-pointer shrink-0', activeColor.name === color.name ? 'ring-2 ring-red-600 scale-110 border-white shadow-md' : 'border-slate-300 hover:scale-105']"></button>
+                            :style="{
+                              background: color.isDualTone 
+                                ? `linear-gradient(90deg, ${color.secondaryHex || '#111111'} 50%, ${color.hex} 50%)`
+                                : color.hex
+                            }"
+                            :class="[
+                              'w-8 h-8 rounded-full border-2 transition-all cursor-pointer shrink-0 shadow-sm',
+                              activeColor?.name === color.name 
+                                ? 'ring-2 ring-red-600 scale-110 border-white shadow-md' 
+                                : 'border-slate-300 hover:scale-105'
+                            ]"></button>
                   </div>
                 </div>
 
+                <!-- SPESIFIKASI GRID -->
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
                   <div class="bg-slate-50 p-2.5 sm:p-3 rounded-xl border border-slate-200">
                     <div class="flex items-center gap-1 text-red-600 text-xs font-bold uppercase">
@@ -568,7 +607,7 @@ const sendCalculationWa = () => {
         </div>
       </section>
 
-      <!-- SIMULATOR KREDIT DINAMIS DENGAN MITRA FINANCE LENGKAP -->
+      <!-- SIMULATOR KREDIT DINAMIS -->
       <section class="w-full py-12 sm:py-16 bg-white border-t border-slate-200" id="kalkulator-section">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
           <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200 grid grid-cols-1 lg:grid-cols-12">
@@ -589,7 +628,7 @@ const sendCalculationWa = () => {
                   </select>
                 </div>
 
-                <!-- PILIHAN LEASING / FINANCE PARTNER -->
+                <!-- PILIHAN LEASING -->
                 <div>
                   <label class="block text-xs font-bold text-slate-700 mb-1.5">Pilihan Leasing / Pembiayaan</label>
                   <select v-model="selectedLeasing" class="w-full h-11 px-3 bg-white rounded-xl text-xs sm:text-sm font-semibold border border-slate-300 outline-none focus:ring-2 focus:ring-[#06182A]">
