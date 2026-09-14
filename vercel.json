@@ -11,7 +11,7 @@
       "destination": "/images/$1"
     },
     {
-      "source": "/((?!images|build|favicon.ico|robots.txt).*)",
+      "source": "/((?!images|build|sitemap.xml|robots.txt|favicon.ico).*)",
       "destination": "/index.html"
     }
   ]
