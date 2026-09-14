@@ -21,9 +21,10 @@ const navigateToCar = (slug) => {
 </script>
 
 <template>
-  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm w-full">
+  <!-- FIXED TOP AGAR SELALU MENEMPEL SAAT DI-SCROLL -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm w-full">
     <div class="max-w-7xl mx-auto px-3 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-2 sm:gap-4">
-      <!-- LOGO (Ukuran teks fleksibel agar tidak menekan tombol di HP) -->
+      <!-- LOGO -->
       <a href="/" class="flex items-center gap-2 sm:gap-3 group shrink min-w-0">
         <img src="/images/suzuki-logo.png" alt="Suzuki Logo" class="h-7 sm:h-9 w-auto object-contain shrink-0" />
         <div class="flex flex-col truncate">
@@ -92,7 +93,7 @@ const navigateToCar = (slug) => {
         <a href="/#kredit-calculator" class="text-slate-600 hover:text-red-600 transition-colors pb-1">Simulasi Kredit</a>
       </nav>
 
-      <!-- PROFIL & CTA BUTTONS (Tersusun pas tanpa over-width di HP) -->
+      <!-- CTA -->
       <div class="flex items-center gap-2 sm:gap-3 shrink-0">
         <a href="https://wa.me/6285299837635" target="_blank" class="hidden md:flex items-center gap-2 bg-slate-50 hover:bg-slate-100 py-1.5 px-3 rounded-xl border border-slate-200">
           <img src="/images/chae.jpeg" class="w-7 h-7 rounded-full object-cover object-top" alt="CHAE SUZUKI" />
@@ -102,21 +103,19 @@ const navigateToCar = (slug) => {
           </div>
         </a>
 
-        <!-- Tombol Chat WA: Tampil Ikon di Mobile, Teks di Desktop -->
         <a href="https://wa.me/6285299837635?text=Halo%20CHAE%20SUZUKI,%20saya%20mau%20tanya%20promo%20Suzuki%20Makassar" target="_blank" class="h-9 sm:h-10 px-3 sm:px-4 bg-red-600 hover:bg-red-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-md flex items-center gap-1.5 transition-all">
           <span class="material-symbols-outlined text-[16px] sm:text-[18px]">chat</span>
           <span class="hidden sm:inline">Hubungi Sales</span>
           <span class="sm:hidden text-[10px]">Chat</span>
         </a>
 
-        <!-- Tombol Hamburger Mobile -->
         <button type="button" @click="isMobileMenuOpen = !isMobileMenuOpen" class="xl:hidden w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 transition-colors cursor-pointer shrink-0">
           <span class="material-symbols-outlined text-[20px] sm:text-[24px]">{{ isMobileMenuOpen ? 'close' : 'menu' }}</span>
         </button>
       </div>
     </div>
 
-    <!-- MOBILE MENU DRAWER -->
+    <!-- MOBILE DRAWER -->
     <div v-show="isMobileMenuOpen" class="xl:hidden bg-white border-b border-slate-200 px-4 py-4 space-y-3 shadow-xl w-full">
       <a href="/" class="block py-2 text-sm font-bold text-slate-800 border-b border-slate-100">Home</a>
       <div>
@@ -136,10 +135,6 @@ const navigateToCar = (slug) => {
           <button type="button" @click="navigateToCar('carry')" class="p-2.5 rounded-lg bg-slate-50 hover:bg-red-50 hover:text-red-600 text-left">Carry Pick Up</button>
           <button type="button" @click="navigateToCar('apv')" class="p-2.5 rounded-lg bg-slate-50 hover:bg-red-50 hover:text-red-600 text-left">Suzuki APV</button>
         </div>
-      </div>
-      <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-slate-700">
-        <a href="/#galery-section" @click="isMobileMenuOpen = false" class="hover:text-red-600">Galeri Serah Terima</a>
-        <a href="/#kredit-calculator" @click="isMobileMenuOpen = false" class="hover:text-red-600">Simulasi Kredit</a>
       </div>
     </div>
   </header>

@@ -1,6 +1,5 @@
 ﻿<script setup>
 import { ref, computed, watch } from 'vue';
-import { Link, usePage } from '@inertiajs/vue3';
 import Navbar from '../Components/Navbar.vue';
 
 const props = defineProps({
@@ -9,8 +8,6 @@ const props = defineProps({
     default: ''
   }
 });
-
-const page = usePage();
 
 // Database Detail Seluruh Mobil Lengkap dengan Pilihan Warna Spesifik Masing-Masing
 const carsDatabase = {
@@ -266,6 +263,11 @@ const leasingPartners = [
   "Adira Finance / Lainnya"
 ];
 
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.documentElement.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
 // Update harga kalkulator dan warna default saat berganti mobil
 watch(currentCar, (newCar) => {
   if (newCar) {
@@ -330,7 +332,7 @@ const sendCalculationWa = () => {
       </div>
     </div>
 
-    <!-- NAVBAR AKTIF -->
+    <!-- NAVBAR AKTIF (Sticky & Mengikuti Scroll) -->
     <Navbar currentPage="passenger" />
 
     <main class="w-full">
@@ -737,8 +739,8 @@ const sendCalculationWa = () => {
       </section>
     </main>
 
-    <!-- FLOATING BOTTOM BAR -->
-    <aside class="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 w-[90%] max-w-md">
+    <!-- FLOATING QUICK BOTTOM BAR DENGAN TOMBOL NAIK KE ATAS -->
+    <aside class="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-40 w-[92%] sm:w-[90%] max-w-md">
       <div class="bg-white/90 backdrop-blur-xl border border-slate-200 shadow-2xl rounded-full p-1.5 flex items-center justify-between gap-2">
         <a :href="`https://wa.me/6285299837635?text=Halo%20CHAE%20SUZUKI,%20saya%20tertarik%20dengan%20${encodeURIComponent(currentCar.name)}`" target="_blank" class="flex-[1.5] h-11 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition-all">
           <span class="relative flex h-2 w-2">
@@ -752,44 +754,47 @@ const sendCalculationWa = () => {
           <span class="material-symbols-outlined text-[18px]">calculate</span>
           <span>Simulasi</span>
         </a>
-        <button @click="window.scrollTo({top: 0, behavior: 'smooth'})" class="w-11 h-11 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors shrink-0 cursor-pointer">
+        <button type="button" @click="scrollToTop" title="Naik ke atas" class="w-11 h-11 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors shrink-0 cursor-pointer">
           <span class="material-symbols-outlined text-[20px]">arrow_upward</span>
         </button>
       </div>
     </aside>
 
-    <!-- FOOTER -->
-    <footer class="w-full bg-[#06182A] text-white pt-16 pb-20 border-t border-slate-800">
+    <!-- FOOTER LENGKAP PERSIS GAMBAR 1 -->
+    <footer class="w-full bg-[#06182A] text-white pt-12 sm:pt-16 pb-24 border-t border-slate-800">
       <div class="max-w-7xl mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-12 border-b border-slate-800">
+          <!-- Kolom 1 -->
           <div class="space-y-4">
             <div class="flex items-center gap-3">
               <div class="bg-white p-1 rounded-lg flex items-center justify-center">
                 <img src="/images/suzuki-logo.png" class="h-8 w-auto object-contain" alt="Suzuki Logo" />
               </div>
-              <span class="font-bold text-lg uppercase tracking-tight text-white">Megahputra Sejahtera Makassar</span>
+              <span class="font-bold text-base sm:text-lg uppercase tracking-tight text-white leading-tight">MEGAHPUTRA SEJAHTERA<br/>MAKASSAR</span>
             </div>
             <p class="text-xs text-slate-400 leading-relaxed">
               Dealer resmi 3S (Sales, Service, Sparepart) Suzuki Mobil wilayah Makassar dan Sulawesi Selatan dengan layanan purnajual terstandarisasi Suzuki Indonesia.
             </p>
             <div class="flex items-center gap-2">
-              <span class="text-[10px] font-bold bg-slate-800 border border-slate-700 px-2.5 py-1 rounded-full text-slate-300">SGP GENUINE</span>
-              <span class="text-[10px] font-bold bg-slate-800 border border-slate-700 px-2.5 py-1 rounded-full text-slate-300">ECSTAR LUBRICANTS</span>
+              <span class="text-[10px] font-bold bg-slate-800/80 border border-slate-700 px-3 py-1 rounded-full text-slate-300">SGP GENUINE</span>
+              <span class="text-[10px] font-bold bg-slate-800/80 border border-slate-700 px-3 py-1 rounded-full text-slate-300">ECSTAR LUBRICANTS</span>
             </div>
           </div>
 
+          <!-- Kolom 2 -->
           <div class="space-y-3">
             <h4 class="font-bold text-sm text-white">Showroom & Bengkel 3S</h4>
             <p class="text-xs text-slate-400 flex items-start gap-2">
               <span class="material-symbols-outlined text-[18px] text-red-500 shrink-0">location_on</span>
               <span>Jl. Gunung Latimojong No. 96, Lajangiru, Kec. Ujung Pandang, Kota Makassar, Sulawesi Selatan 90141</span>
             </p>
-            <p class="text-xs text-slate-400 flex items-center gap-2">
+            <p class="text-xs text-slate-400 flex items-start gap-2">
               <span class="material-symbols-outlined text-[18px] text-red-500 shrink-0">schedule</span>
               <span>Senin - Sabtu: 08:30 - 17:00 WITA<br/>Minggu / Libur: Siaga Booking</span>
             </p>
           </div>
 
+          <!-- Kolom 3 -->
           <div class="space-y-3">
             <h4 class="font-bold text-sm text-white">Mitra Pembiayaan Resmi</h4>
             <ul class="space-y-1.5 text-xs text-slate-400">
@@ -802,6 +807,7 @@ const sendCalculationWa = () => {
             </ul>
           </div>
 
+          <!-- Kolom 4 -->
           <div class="space-y-3">
             <h4 class="font-bold text-sm text-white">Kontak Konsultan Resmi</h4>
             <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700 space-y-1">
@@ -813,13 +819,14 @@ const sendCalculationWa = () => {
                 <span class="material-symbols-outlined text-[14px]">chat</span> Chat Personal WhatsApp
               </a>
             </div>
-            <div class="text-xs text-slate-400">
+            <div class="text-xs text-slate-400 pt-1">
               <span class="block font-semibold text-white">Customer Care WhatsApp:</span>
               0852-9983-7635
             </div>
           </div>
         </div>
 
+        <!-- Baris Hak Cipta & Link Bawah -->
         <div class="pt-6 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 gap-4">
           <p>© 2026 PT Megahputra Sejahtera (Suzuki Megah Makassar). Hak Cipta Dilindungi Undang-Undang.</p>
           <div class="flex items-center gap-6">
