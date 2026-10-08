@@ -90,7 +90,6 @@ const navigateToCar = (slug) => {
         </div>
 
         <a href="/#galery-section" class="text-slate-600 hover:text-red-600 transition-colors pb-1">Galery Serah Terima</a>
-        <a href="/#kredit-calculator" class="text-slate-600 hover:text-red-600 transition-colors pb-1">Simulasi Kredit</a>
       </nav>
 
       <!-- CTA -->
@@ -103,7 +102,7 @@ const navigateToCar = (slug) => {
           </div>
         </a>
 
-        <a href="https://wa.me/6285299837635?text=Halo%20CHAE%20SUZUKI,%20saya%20mau%20tanya%20promo%20Suzuki%20Makassar" target="_blank" class="h-9 sm:h-10 px-3 sm:px-4 bg-red-600 hover:bg-red-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-md flex items-center gap-1.5 transition-all">
+        <a href="https://wa.me/6285299837635?text=Halo%20CHAE%20SUZUKI,%20saya%20mau%20pesan%20unit%20mobil%20Suzuki%20Makassar" target="_blank" class="h-9 sm:h-10 px-3 sm:px-4 bg-red-600 hover:bg-red-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl shadow-md flex items-center gap-1.5 transition-all">
           <span class="material-symbols-outlined text-[16px] sm:text-[18px]">chat</span>
           <span class="hidden sm:inline">Hubungi Sales</span>
           <span class="sm:hidden text-[10px]">Chat</span>
