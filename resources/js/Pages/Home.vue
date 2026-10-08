@@ -57,11 +57,11 @@ const heroSlides = [
     tagColor: "bg-red-600 text-white",
     title: "All New Ertiga Hybrid: Kenyamanan Cerdas Keluarga",
     description: "Dapatkan promo DP ringan mulai 20 Jt-an atau angsuran hemat 3 jutaan/bulan. Disertai bonus kaca film Solargard, karpet set, dan Free Service berkala s/d 50.000 KM.",
-    btnPrimary: "Minta Brosur & Simulasi",
+    btnPrimary: "Pesan Sekarang",
     btnSecondary: "Lihat Spesifikasi",
     carSlug: "ertiga",
     image: "/images/Banner.1.1.jpg",
-    waParam: "promo Ertiga Hybrid Makassar"
+    waParam: "Halo CHAE SUZUKI, saya mau pesan All New Ertiga Hybrid Makassar"
   },
   {
     id: 2,
@@ -69,11 +69,11 @@ const heroSlides = [
     tagColor: "bg-emerald-600 text-white",
     title: "New Carry Pick Up: Rajanya Niaga Teruji",
     description: "Daya angkut muatan tangguh hingga 1 ton dengan bak luas, mesin K15B ekstra irit dan bandel. DP super minim mulai 10 Jt-an khusus pelaku usaha Sulawesi.",
-    btnPrimary: "Paket DP Usaha Murah",
+    btnPrimary: "Pesan Sekarang",
     btnSecondary: "Rincian Dimensi Bak",
     carSlug: "carry",
     image: "/images/Banner2.jpg",
-    waParam: "info paket kredit New Carry Pick Up Makassar"
+    waParam: "Halo CHAE SUZUKI, saya mau pesan New Carry Pick Up Makassar"
   },
   {
     id: 3,
@@ -81,11 +81,11 @@ const heroSlides = [
     tagColor: "bg-[#06182A] text-white border border-slate-700",
     title: "Suzuki XL7 Alpha Hybrid: Gagah, Sporty & Berkelas",
     description: "SUV 7-seater tangguh dengan ground clearance 200 mm, fitur canggih Smart E-Mirror Touchscreen, DP mulai 25 Jt-an dan efisiensi teknologi Smart Hybrid SHVS.",
-    btnPrimary: "Promo Spesial XL7",
+    btnPrimary: "Pesan Sekarang",
     btnSecondary: "Lihat Spesifikasi",
     carSlug: "xl7",
     image: "/images/baner3.jpg",
-    waParam: "promo Suzuki XL7 Hybrid Makassar"
+    waParam: "Halo CHAE SUZUKI, saya mau pesan Suzuki XL7 Hybrid Makassar"
   }
 ];
 const currentSlide = ref(0);
@@ -230,42 +230,7 @@ const filteredCars = computed(() => {
   return cars.filter(c => c.category.includes(selectedCategory.value));
 });
 
-// 3. Kalkulator Kredit Instan
-const formatIDR = (num) => 'Rp ' + Math.round(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-
-const calcCarPrice = ref(269700000);
-const calcDpPercent = ref(20);
-const calcTenor = ref(5);
-const selectedLeasing = ref("Mandiri Tunas Finance");
-
-const leasingPartners = [
-  "Mandiri Tunas Finance",
-  "BCA Finance",
-  "BRI Finance",
-  "Suzuki Finance Indonesia",
-  "Indomobil Finance",
-  "Adira Finance / Lainnya"
-];
-
-const calcDpAmount = computed(() => calcCarPrice.value * (calcDpPercent.value / 100));
-const calcLoan = computed(() => calcCarPrice.value - calcDpAmount.value);
-const calcMonthly = computed(() => {
-  const annualRate = 0.032;
-  const totalInterest = calcLoan.value * annualRate * calcTenor.value;
-  return (calcLoan.value + totalInterest) / (calcTenor.value * 12);
-});
-
-const selectedCarName = computed(() => {
-  const match = cars.find(c => c.price === Number(calcCarPrice.value));
-  return match ? match.name : "All New Ertiga";
-});
-
-const calcWhatsAppUrl = computed(() => {
-  const text = `Halo CHAE SUZUKI, saya sudah simulasi kredit di website untuk ${selectedCarName.value} dengan DP ${calcDpPercent.value}% (${formatIDR(calcDpAmount.value)}) tenor ${calcTenor.value} tahun via leasing ${selectedLeasing.value}. Mohon info promo diskon dan persyaratannya.`;
-  return `https://wa.me/6285299837635?text=${encodeURIComponent(text)}`;
-});
-
-// 4. Data Galeri Testimoni Serah Terima (15 Foto Lengkap)
+// 3. Data Galeri Testimoni Serah Terima (15 Foto Lengkap)
 const testimonials = [
   {
     id: 1,
@@ -297,10 +262,10 @@ const testimonials = [
   {
     id: 4,
     image: "/images/Testimoni/WhatsApp Image 2026-09-10 at 16.29.34.jpeg",
-    tag: "Booking Test Drive",
+    tag: "Pemesanan Unit",
     badge: "Verified Buyer • Makassar",
-    title: "Test Drive Suzuki XL7 Alpha Hybrid",
-    quote: "Test drive diantar langsung ke rumah, impresi berkendara mantap dan penjelasan fitur sangat ramah.",
+    title: "Pemesanan Suzuki XL7 Alpha Hybrid",
+    quote: "Pelayanan sangat cepat dan transparan, unit diantar langsung ke rumah bersama Sales Executive resmi.",
     date: "03 September 2026"
   },
   {
@@ -333,19 +298,19 @@ const testimonials = [
   {
     id: 9,
     image: "/images/Testimoni/WhatsApp Image 2026-09-10 at 16.29.35 (8).jpeg",
-    tag: "Booking Test Drive",
+    tag: "Pemesanan Unit",
     badge: "Verified Buyer • Makassar",
-    title: "Test Drive Suzuki Fronx",
-    quote: "Uji performa kenyamanan berkendara di jalanan kota Makassar sebelum memutuskan ambil unit baru.",
+    title: "Pemesanan Suzuki Fronx",
+    quote: "Konsultasi produk sangat jelas dan ramah saat sesi penawaran unit di showroom resmi Makassar.",
     date: "17 Agustus 2026"
   },
   {
     id: 10,
     image: "/images/Testimoni/WhatsApp Image 2026-09-10 at 16.29.35 (9).jpeg",
-    tag: "Booking Test Drive",
+    tag: "Pemesanan Unit",
     badge: "Verified Buyer • Makassar",
-    title: "Test Drive Suzuki Fronx Crossover",
-    quote: "Konsultasi produk sangat jelas dan ramah saat sesi test drive unit di showroom resmi Makassar.",
+    title: "Pemesanan Suzuki Fronx Crossover",
+    quote: "Penjelasan mengenai promo dan spesifikasi mobil disampaikan dengan detail oleh tim sales.",
     date: "15 Agustus 2026"
   },
   {
@@ -473,7 +438,7 @@ const toggleGallery = () => {
                   </p>
                   <div class="pt-2 flex flex-wrap items-center gap-3 sm:gap-4">
                     <a :href="`https://wa.me/6285299837635?text=${encodeURIComponent(slide.waParam)}`" target="_blank" class="h-11 sm:h-12 px-5 sm:px-6 bg-red-600 hover:bg-red-700 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg flex items-center gap-2 transition-all">
-                      <span class="material-symbols-outlined text-[18px]">request_quote</span>
+                      <span class="material-symbols-outlined text-[18px]">shopping_cart</span>
                       {{ slide.btnPrimary }}
                     </a>
                     <button type="button" @click="goToDetail(slide.carSlug)" class="h-11 sm:h-12 px-5 sm:px-6 bg-white/15 hover:bg-white/25 text-white font-bold text-xs sm:text-sm rounded-xl backdrop-blur-sm flex items-center gap-2 transition-all cursor-pointer">
@@ -505,33 +470,19 @@ const toggleGallery = () => {
           </div>
         </section>
 
-        <!-- 2. QUICK ACTION STRIP -->
+        <!-- 2. QUICK ACTION STRIP (Kartu Pesan Sekarang & Tukar Tambah) -->
         <section class="relative z-30 -mt-8 sm:-mt-12 max-w-7xl mx-auto px-4 sm:px-6 w-full box-border">
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
-            <a href="https://wa.me/6285299837635?text=Halo%20CHAE%20SUZUKI,%20saya%20mau%20booking%20test%20drive" target="_blank" class="group bg-white rounded-xl p-5 sm:p-6 shadow-md hover:shadow-xl transition-all border border-slate-200 flex flex-col justify-between">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            <a href="https://wa.me/6285299837635?text=Halo%20CHAE%20SUZUKI,%20saya%20mau%20pesan%20unit%20mobil%20Suzuki%20Makassar" target="_blank" class="group bg-white rounded-xl p-5 sm:p-6 shadow-md hover:shadow-xl transition-all border border-slate-200 flex flex-col justify-between">
               <div class="space-y-3">
                 <div class="w-11 h-11 rounded-lg bg-red-50 flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-colors">
-                  <span class="material-symbols-outlined text-[24px]">airline_seat_recline_extra</span>
+                  <span class="material-symbols-outlined text-[24px]">shopping_cart</span>
                 </div>
-                <h3 class="font-bold text-slate-900 text-base group-hover:text-red-600 transition-colors">Booking Test Drive</h3>
-                <p class="text-xs text-slate-500 leading-relaxed">Jadwal fleksibel. Mobil diantar langsung ke alamat rumah atau kantor Anda di Makassar.</p>
+                <h3 class="font-bold text-slate-900 text-base group-hover:text-red-600 transition-colors">Pesan Sekarang</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">Pesan unit mobil Suzuki impian Anda dengan cepat dan praktis melalui Konsultan Resmi Chae Suzuki.</p>
               </div>
               <div class="pt-4 sm:pt-5 flex items-center gap-1.5 text-xs font-bold text-red-600">
-                <span>Reservasi Sekarang</span>
-                <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
-              </div>
-            </a>
-
-            <a href="#kredit-calculator" class="group bg-white rounded-xl p-5 sm:p-6 shadow-md hover:shadow-xl transition-all border border-slate-200 flex flex-col justify-between">
-              <div class="space-y-3">
-                <div class="w-11 h-11 rounded-lg bg-slate-100 flex items-center justify-center text-slate-900 group-hover:bg-slate-900 group-hover:text-white transition-colors">
-                  <span class="material-symbols-outlined text-[24px]">calculate</span>
-                </div>
-                <h3 class="font-bold text-slate-900 text-base group-hover:text-red-600 transition-colors">Simulasi Kredit Instan</h3>
-                <p class="text-xs text-slate-500 leading-relaxed">Hitung skema cicilan DP ringan bersama mitra leasing terkemuka: BCA, Mandiri, BRI, dll.</p>
-              </div>
-              <div class="pt-4 sm:pt-5 flex items-center gap-1.5 text-xs font-bold text-slate-900">
-                <span>Hitung Angsuran</span>
+                <span>Pesan via WhatsApp</span>
                 <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
               </div>
             </a>
@@ -614,14 +565,14 @@ const toggleGallery = () => {
                   </div>
                 </div>
 
-                <!-- Tombol Detail Memanggil Halaman Penuh CarDetail -->
+                <!-- Tombol Detail & Hubungi Sales -->
                 <div class="p-5 pt-0 grid grid-cols-2 gap-2">
                   <button type="button" @click="goToDetail(car.slug)"
                         class="h-10 bg-[#06182A] hover:bg-slate-800 text-white text-xs font-bold rounded-lg flex items-center justify-center transition-colors cursor-pointer">
                     Detail Mobil
                   </button>
 
-                  <a :href="`https://wa.me/6285299837635?text=Halo%20CHAE%20SUZUKI,%20saya%20mau%20tanya%20paket%20${encodeURIComponent(car.dpPromo)}%20untuk%20${encodeURIComponent(car.name)}`" target="_blank"
+                  <a :href="`https://wa.me/6285299837635?text=Halo%20CHAE%20SUZUKI,%20saya%20mau%20pesan%20${encodeURIComponent(car.name)}`" target="_blank"
                      class="h-10 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded-lg flex items-center justify-center gap-1 transition-colors shadow-sm">
                     <span class="material-symbols-outlined text-[15px]">chat</span>
                     <span>Hubungi Sales</span>
@@ -632,89 +583,8 @@ const toggleGallery = () => {
           </div>
         </section>
 
-        <!-- 4. CALCULATOR SECTION -->
-        <section class="w-full py-12 sm:py-16 bg-slate-50 border-y border-slate-200" id="kredit-calculator">
-          <div class="max-w-7xl mx-auto px-4 sm:px-6">
-            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200 grid grid-cols-1 lg:grid-cols-12">
-              <div class="lg:col-span-7 p-5 sm:p-8 lg:p-10 space-y-6">
-                <div>
-                  <span class="text-xs font-bold text-red-600 uppercase tracking-wider">Transparansi Pembiayaan</span>
-                  <h2 class="text-2xl lg:text-3xl font-extrabold text-slate-900 mt-1">Simulasi Kredit Instan Suzuki</h2>
-                  <p class="text-xs sm:text-sm text-slate-500">Sesuaikan uang muka (DP), jangka waktu angsuran, dan pilihan mitra finance terpercaya.</p>
-                </div>
-
-                <div class="space-y-4">
-                  <div>
-                    <label class="block text-sm font-semibold text-slate-800 mb-1.5">Pilih Model Kendaraan</label>
-                    <select v-model.number="calcCarPrice" class="w-full h-12 px-4 rounded-xl bg-slate-100 border border-slate-200 text-xs sm:text-sm font-semibold text-slate-800 outline-none focus:bg-white focus:ring-2 focus:ring-[#06182A]">
-                      <option v-for="car in cars" :key="car.id" :value="car.price">
-                        {{ car.name }} - {{ car.formattedPrice }} ({{ car.dpPromo }})
-                      </option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label class="block text-sm font-semibold text-slate-800 mb-1.5">Pilihan Metode Pembayaran / Leasing Rekanan</label>
-                    <select v-model="selectedLeasing" class="w-full h-12 px-4 rounded-xl bg-slate-100 border border-slate-200 text-xs sm:text-sm font-semibold text-slate-800 outline-none focus:bg-white focus:ring-2 focus:ring-[#06182A]">
-                      <option v-for="(lease, idx) in leasingPartners" :key="idx" :value="lease">{{ lease }}</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <div class="flex items-center justify-between text-sm mb-2">
-                      <span class="font-semibold text-slate-800">Besaran Uang Muka (DP): <strong class="text-red-600">{{ calcDpPercent }}%</strong></span>
-                      <span class="text-slate-500 font-bold">{{ formatIDR(calcDpAmount) }}</span>
-                    </div>
-                    <input type="range" min="10" max="50" step="5" v-model.number="calcDpPercent" class="w-full h-2 bg-slate-200 rounded-lg cursor-pointer accent-red-600" />
-                  </div>
-
-                  <div>
-                    <label class="block text-sm font-semibold text-slate-800 mb-1.5">Jangka Waktu (Tenor)</label>
-                    <div class="grid grid-cols-5 gap-1.5 sm:gap-2">
-                      <button v-for="yr in [1, 2, 3, 4, 5]" :key="yr" type="button" @click="calcTenor = yr"
-                              :class="['py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-bold transition-all cursor-pointer', calcTenor === yr ? 'bg-red-600 text-white shadow-md' : 'bg-slate-100 hover:bg-slate-200 text-slate-700']">
-                        {{ yr }} Thn
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="lg:col-span-5 bg-[#06182A] text-white p-5 sm:p-8 lg:p-10 flex flex-col justify-between">
-                <div class="space-y-4">
-                  <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Estimasi Pembiayaan</span>
-                    <span class="text-xs font-bold text-emerald-400 bg-emerald-500/20 px-2.5 py-0.5 rounded">Bunga Spesial 3.2%</span>
-                  </div>
-
-                  <div class="bg-white/10 rounded-xl p-4 space-y-1">
-                    <span class="text-xs text-slate-300">Estimasi Angsuran Per Bulan:</span>
-                    <p class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
-                      {{ formatIDR(calcMonthly) }}<span class="text-sm font-normal text-slate-300"> / bln</span>
-                    </p>
-                  </div>
-
-                  <div class="space-y-2 text-xs sm:text-sm text-slate-300 border-t border-slate-700 pt-4">
-                    <div class="flex justify-between"><span>Harga Mobil (OTR):</span><strong class="text-white">{{ formatIDR(calcCarPrice) }}</strong></div>
-                    <div class="flex justify-between"><span>Total Uang Muka (DP):</span><strong class="text-white">{{ formatIDR(calcDpAmount) }}</strong></div>
-                    <div class="flex justify-between"><span>Tenor Dipilih:</span><strong class="text-white">{{ calcTenor * 12 }} Bulan ({{ calcTenor }} Tahun)</strong></div>
-                    <div class="flex justify-between items-center"><span>Mitra Pembiayaan:</span><span class="bg-emerald-500/20 text-emerald-300 text-xs font-bold px-2 py-0.5 rounded">{{ selectedLeasing }}</span></div>
-                  </div>
-                </div>
-
-                <div class="pt-6 space-y-2">
-                  <a :href="calcWhatsAppUrl" target="_blank" class="w-full h-12 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl flex items-center justify-center gap-2 shadow-lg transition-all">
-                    <span class="material-symbols-outlined text-[20px]">chat</span>
-                    <span>Ajukan Kredit ke WhatsApp Sales</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- 5. DEALER ADVANTAGES -->
-        <section class="w-full py-12 sm:py-16">
+        <!-- 4. DEALER ADVANTAGES -->
+        <section class="w-full py-12 sm:py-16 bg-slate-50 border-t border-slate-200">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-10">
             <div class="text-center max-w-2xl mx-auto space-y-1">
               <span class="text-xs font-bold uppercase tracking-wider text-red-600">Keuntungan Resmi Suzuki Megah</span>
@@ -758,8 +628,8 @@ const toggleGallery = () => {
           </div>
         </section>
 
-        <!-- 6. DELIVERY GALLERY (LENGKAP DENGAN TOGGLE BUKA/TUTUP) -->
-        <section class="w-full py-12 sm:py-16 bg-slate-50 border-t border-slate-200" id="galery-section">
+        <!-- 5. DELIVERY GALLERY (LENGKAP DENGAN TOGGLE BUKA/TUTUP) -->
+        <section class="w-full py-12 sm:py-16 bg-white border-t border-slate-200" id="galery-section">
           <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
               <div>
@@ -808,7 +678,7 @@ const toggleGallery = () => {
           </div>
         </section>
 
-        <!-- 7. SALES CTA BANNER -->
+        <!-- 6. SALES CTA BANNER -->
         <section class="w-full py-12 sm:py-16">
           <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="relative rounded-2xl overflow-hidden bg-[#06182A] text-white p-6 sm:p-8 lg:p-12 shadow-2xl">
@@ -819,10 +689,10 @@ const toggleGallery = () => {
                     <span>KONSULTAN PENJUALAN RESMI SUZUKI MAKASSAR</span>
                   </div>
                   <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight">
-                    Ingin Diskon Maksimal & Hitungan Kredit Paling Terjangkau?
+                    Ingin Diskon Maksimal & Promo Harga Terbaik?
                   </h2>
                   <p class="text-slate-300 text-xs sm:text-sm lg:text-base leading-relaxed max-w-2xl">
-                    Hubungi langsung <strong class="text-white">CHAE SUZUKI</strong> (Sales Executive Suzuki Megah Makassar). Konsultasi 100% gratis, siap melayani penawaran harga terbaik, simulasi kredit menyesuaikan budget via leasing pilihan Anda, tukar tambah, hingga test drive ke rumah.
+                    Hubungi langsung <strong class="text-white">CHAE SUZUKI</strong> (Sales Executive Suzuki Megah Makassar). Konsultasi 100% gratis, siap melayani penawaran harga terbaik, tukar tambah, hingga pemesanan unit langsung ke rumah Anda.
                   </p>
                   <div class="pt-2 flex flex-wrap items-center gap-4">
                     <a href="https://wa.me/6285299837635?text=Halo%20CHAE%20SUZUKI,%20saya%20mau%20konsultasi%20promo%20Suzuki%20Makassar" target="_blank" class="h-12 px-6 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg flex items-center gap-2 transition-all">
@@ -853,17 +723,13 @@ const toggleGallery = () => {
       <!-- FLOATING QUICK BOTTOM BAR DENGAN TOMBOL NAIK KE ATAS -->
       <aside class="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-40 w-[92%] sm:w-[90%] max-w-md">
         <div class="bg-white/90 backdrop-blur-xl border border-slate-200 shadow-2xl rounded-full p-1.5 flex items-center justify-between gap-2">
-          <a href="https://wa.me/6285299837635" target="_blank" class="flex-[1.5] h-11 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition-all">
-            <span class="relative flex h-2 w-2">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-80"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
-            </span>
+          <a href="https://wa.me/6285299837635?text=Halo%20CHAE%20SUZUKI,%20saya%20mau%20pesan%20unit%20mobil%20Suzuki" target="_blank" class="flex-1 h-11 bg-red-600 hover:bg-red-700 text-white rounded-full text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition-all">
+            <span class="material-symbols-outlined text-[18px]">shopping_cart</span>
+            <span>Pesan Sekarang</span>
+          </a>
+          <a href="https://wa.me/6285299837635" target="_blank" class="flex-1 h-11 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition-all">
             <span class="material-symbols-outlined text-[18px]">forum</span>
             <span>Chat WhatsApp</span>
-          </a>
-          <a href="#kredit-calculator" class="flex-1 h-11 bg-slate-100 hover:bg-slate-200 text-slate-900 border border-slate-300 rounded-full text-xs font-bold flex items-center justify-center gap-1.5 transition-all">
-            <span class="material-symbols-outlined text-[18px]">calculate</span>
-            <span>Simulasi</span>
           </a>
           <button type="button" @click="scrollToTop" title="Naik ke atas" class="w-11 h-11 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors shrink-0 cursor-pointer">
             <span class="material-symbols-outlined text-[20px]">arrow_upward</span>
@@ -871,7 +737,7 @@ const toggleGallery = () => {
         </div>
       </aside>
 
-      <!-- FOOTER LENGKAP PERSIS GAMBAR 1 -->
+      <!-- FOOTER LENGKAP -->
       <footer class="w-full bg-[#06182A] text-white pt-12 sm:pt-16 pb-24 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-6">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-12 border-b border-slate-800">
